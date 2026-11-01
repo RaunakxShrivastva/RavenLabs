@@ -1,0 +1,22 @@
+name: Feature Proposal
+description: Suggest an idea or reverse-engineered utility for RavenLabs
+labels: ["enhancement", "proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest an app or feature that is locked in a walled garden that you want to see open and native!
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Motivation
+      description: Is your feature request related to a problem or a platform-locked utility?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution / Experience
+      description: What should the native twin experience look and feel like?
+    validations:
+      required: true
