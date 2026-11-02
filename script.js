@@ -300,87 +300,12 @@
   }
 
   // Attach tactile sound to interactive buttons
-  document.querySelectorAll('button, .btn-primary, .btn-accent, .btn-ghost, .nav-cta, .notch-tab-btn').forEach(btn => {
+  document.querySelectorAll('button, .btn-primary, .btn-accent, .btn-ghost, .nav-cta').forEach(btn => {
     btn.addEventListener('mouseenter', () => playHapticTone(900, 0.02, 'sine', 0.015));
     btn.addEventListener('click', () => playHapticTone(650, 0.04, 'triangle', 0.04));
   });
 
-  /* ─── 3. Interactive Dynamic Island Simulator ─── */
-  (function initInteractiveNotch() {
-    const notch = document.getElementById('interactive-notch');
-    const tabBtns = document.querySelectorAll('.notch-tab-btn');
-    const viewStates = document.querySelectorAll('.notch-view-state');
-    const mediaToggle = document.getElementById('notch-media-play');
-    const visualizer = document.getElementById('notch-visualizer');
-    const cpuMetric = document.getElementById('notch-cpu-metric');
-
-    if (!notch) return;
-
-    const modes = ['music', 'power', 'stats', 'focus'];
-    let currentModeIndex = 0;
-    let isPlaying = true;
-
-    function setNotchMode(mode) {
-      tabBtns.forEach(b => {
-        const isActive = b.getAttribute('data-mode') === mode;
-        b.classList.toggle('active', isActive);
-        b.setAttribute('aria-selected', isActive.toString());
-      });
-
-      viewStates.forEach(v => {
-        const isMatch = v.getAttribute('data-view') === mode;
-        v.classList.toggle('active', isMatch);
-      });
-
-      currentModeIndex = modes.indexOf(mode);
-    }
-
-    // Tab buttons click
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const mode = btn.getAttribute('data-mode');
-        setNotchMode(mode);
-      });
-    });
-
-    // Clicking the island directly cycles views!
-    notch.addEventListener('click', () => {
-      currentModeIndex = (currentModeIndex + 1) % modes.length;
-      setNotchMode(modes[currentModeIndex]);
-      playHapticTone(520, 0.04, 'triangle', 0.05);
-    });
-
-    // Play/Pause Audio toggle
-    if (mediaToggle && visualizer) {
-      mediaToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        isPlaying = !isPlaying;
-        const iconPause = mediaToggle.querySelector('.icon-pause');
-        const iconPlay = mediaToggle.querySelector('.icon-play');
-
-        if (isPlaying) {
-          if (iconPause) iconPause.style.display = 'block';
-          if (iconPlay) iconPlay.style.display = 'none';
-          visualizer.classList.add('active');
-        } else {
-          if (iconPause) iconPause.style.display = 'none';
-          if (iconPlay) iconPlay.style.display = 'block';
-          visualizer.classList.remove('active');
-        }
-      });
-    }
-
-    // Dynamic telemetry fluctuations
-    if (cpuMetric) {
-      setInterval(() => {
-        const randomCpu = (3.5 + Math.random() * 2.5).toFixed(1);
-        cpuMetric.textContent = randomCpu + '%';
-      }, 2500);
-    }
-  })();
-
-  /* ─── 4. Spotlight Cursor & 3D Tilt Physics ─── */
+  /* ─── 3. Spotlight Cursor & 3D Tilt Physics ─── */
   (function initCardTiltAndSpotlight() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

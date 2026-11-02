@@ -47,17 +47,15 @@ Our debut production release reimagines notch and dynamic island interaction mod
 - **Fluid Media Island**: Seamless now-playing HUD with reactive waveforms and real-time audio controls.
 - **Hardware Telemetry**: Instant glances at CPU load, memory headroom, battery health, and thermal throttles.
 - **Micro Clipboard & Drop Shelf**: Drag-and-drop staging area for fast file sharing and scratchpad storage.
-- **Interactive Live Simulator**: Experience real-time island mode transitions directly on the [RavenLabs website](https://ravenlabs.dev).
-- **Live Site**: [ravennotch.me](https://ravennotch.me)
+- **Dedicated Site**: [ravennotch.me](https://ravennotch.me)
 - **Source Code**: [RaunakxShrivastva/Raven-Island](https://github.com/RaunakxShrivastva/Raven-Island)
 
 ---
 
 ## ✨ Web Experience & Motion Engine
 
-The RavenLabs website is crafted with zero-dependency native web standards:
+The RavenLabs brand website is crafted with zero-dependency native web standards:
 
-- **Interactive Dynamic Island Simulator**: Test live state transitions (Audio, 96W Fast Charge, Hardware Telemetry, Deep Work Timer) with physics-based spring curves.
 - **Synthesized Tactile Audio**: Ultra-low-latency micro-haptics generated in real-time via Web Audio API oscillators.
 - **Spotlight Cursor Optics & 3D Tilt**: Perspective calculations following user cursor trajectory.
 - **Ambient Mesh Drift**: Fluid multi-layer glow shaders creating visual depth.
