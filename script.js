@@ -212,6 +212,225 @@
 
   initNotchClock();
 
+  /* ════════════════════════════════════════════════════════════
+     HIGH-END INTERACTIVITY & MOTION ENGINE ($5,000 SUITE)
+     ════════════════════════════════════════════════════════════ */
+
+  /* ─── 1. Scroll Progress Bar ─── */
+  (function initScrollProgress() {
+    const progressEl = document.getElementById('scroll-progress');
+    if (!progressEl) return;
+
+    function updateProgress() {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) return;
+      const progress = Math.min(Math.max(window.scrollY / scrollHeight, 0), 1);
+      progressEl.style.transform = `scaleX(${progress})`;
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  })();
+
+  /* ─── 2. Tactile Web Audio Synthesizer (Micro-interactions) ─── */
+  let audioCtx = null;
+  let soundEnabled = true;
+
+  try {
+    const savedSound = localStorage.getItem('ravenlabs-sfx');
+    if (savedSound === 'off') soundEnabled = false;
+  } catch {}
+
+  function getAudioContext() {
+    if (!audioCtx && typeof window.AudioContext !== 'undefined') {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function playHapticTone(freq = 600, duration = 0.035, type = 'sine', gainVal = 0.04) {
+    if (!soundEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.5, ctx.currentTime + duration);
+      gain.gain.setValueAtTime(gainVal, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    } catch {}
+  }
+
+  // Sound Toggle Control
+  const soundBtn = document.getElementById('sound-toggle');
+  if (soundBtn) {
+    function updateSoundBtnUI() {
+      const onIcon = soundBtn.querySelector('.sound-icon-on');
+      const offIcon = soundBtn.querySelector('.sound-icon-off');
+      const text = soundBtn.querySelector('.sound-text');
+      if (soundEnabled) {
+        soundBtn.classList.add('active');
+        if (onIcon) onIcon.style.display = 'block';
+        if (offIcon) offIcon.style.display = 'none';
+        if (text) text.textContent = 'SFX: ON';
+      } else {
+        soundBtn.classList.remove('active');
+        if (onIcon) onIcon.style.display = 'none';
+        if (offIcon) offIcon.style.display = 'block';
+        if (text) text.textContent = 'SFX: OFF';
+      }
+    }
+    updateSoundBtnUI();
+
+    soundBtn.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      try { localStorage.setItem('ravenlabs-sfx', soundEnabled ? 'on' : 'off'); } catch {}
+      updateSoundBtnUI();
+      if (soundEnabled) playHapticTone(800, 0.05, 'triangle', 0.06);
+    });
+  }
+
+  // Attach tactile sound to interactive buttons
+  document.querySelectorAll('button, .btn-primary, .btn-accent, .btn-ghost, .nav-cta, .notch-tab-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => playHapticTone(900, 0.02, 'sine', 0.015));
+    btn.addEventListener('click', () => playHapticTone(650, 0.04, 'triangle', 0.04));
+  });
+
+  /* ─── 3. Interactive Dynamic Island Simulator ─── */
+  (function initInteractiveNotch() {
+    const notch = document.getElementById('interactive-notch');
+    const tabBtns = document.querySelectorAll('.notch-tab-btn');
+    const viewStates = document.querySelectorAll('.notch-view-state');
+    const mediaToggle = document.getElementById('notch-media-play');
+    const visualizer = document.getElementById('notch-visualizer');
+    const cpuMetric = document.getElementById('notch-cpu-metric');
+
+    if (!notch) return;
+
+    const modes = ['music', 'power', 'stats', 'focus'];
+    let currentModeIndex = 0;
+    let isPlaying = true;
+
+    function setNotchMode(mode) {
+      tabBtns.forEach(b => {
+        const isActive = b.getAttribute('data-mode') === mode;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive.toString());
+      });
+
+      viewStates.forEach(v => {
+        const isMatch = v.getAttribute('data-view') === mode;
+        v.classList.toggle('active', isMatch);
+      });
+
+      currentModeIndex = modes.indexOf(mode);
+    }
+
+    // Tab buttons click
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const mode = btn.getAttribute('data-mode');
+        setNotchMode(mode);
+      });
+    });
+
+    // Clicking the island directly cycles views!
+    notch.addEventListener('click', () => {
+      currentModeIndex = (currentModeIndex + 1) % modes.length;
+      setNotchMode(modes[currentModeIndex]);
+      playHapticTone(520, 0.04, 'triangle', 0.05);
+    });
+
+    // Play/Pause Audio toggle
+    if (mediaToggle && visualizer) {
+      mediaToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isPlaying = !isPlaying;
+        const iconPause = mediaToggle.querySelector('.icon-pause');
+        const iconPlay = mediaToggle.querySelector('.icon-play');
+
+        if (isPlaying) {
+          if (iconPause) iconPause.style.display = 'block';
+          if (iconPlay) iconPlay.style.display = 'none';
+          visualizer.classList.add('active');
+        } else {
+          if (iconPause) iconPause.style.display = 'none';
+          if (iconPlay) iconPlay.style.display = 'block';
+          visualizer.classList.remove('active');
+        }
+      });
+    }
+
+    // Dynamic telemetry fluctuations
+    if (cpuMetric) {
+      setInterval(() => {
+        const randomCpu = (3.5 + Math.random() * 2.5).toFixed(1);
+        cpuMetric.textContent = randomCpu + '%';
+      }, 2500);
+    }
+  })();
+
+  /* ─── 4. Spotlight Cursor & 3D Tilt Physics ─── */
+  (function initCardTiltAndSpotlight() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cards = document.querySelectorAll('.product-card, .feature-card, .comp-card, .milestone-item');
+
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Set spotlight CSS variables
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+
+        // Subtle 3D tilt calculation
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  })();
+
+  /* ─── 5. Magnetic Button Hover Feel ─── */
+  (function initMagneticButtons() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-accent, #nav-cta-btn');
+
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  })();
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
