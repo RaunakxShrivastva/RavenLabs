@@ -34,6 +34,13 @@
 </head>
 <body>
 
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient Mesh Gradient Glow Orbs -->
+  <div class="ambient-glow orb-1" aria-hidden="true"></div>
+  <div class="ambient-glow orb-2" aria-hidden="true"></div>
+
 <!-- ═══════════════════════════════════════
      NAVIGATION
 ═══════════════════════════════════════ -->
@@ -52,6 +59,13 @@
     </div>
 
     <div class="nav-right">
+      <!-- Tactile Sound toggle -->
+      <button id="sound-toggle" class="nav-sound-btn" type="button" aria-label="Toggle sound effects" title="Toggle tactile audio feedback">
+        <svg class="sound-icon-on" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <svg class="sound-icon-off" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        <span class="sound-text">SFX: ON</span>
+      </button>
+
       <!-- Theme toggle -->
       <button id="theme-toggle" type="button" aria-label="Switch theme">
         <!-- Icon injected by JS -->
@@ -200,6 +214,36 @@
       </ol>
     </div>
 
+    <!-- Interactive Architecture Benchmark Comparison -->
+    <div class="architecture-comparison reveal-item" role="region" aria-label="Architecture Comparison">
+      <div class="comparison-header">
+        <span class="comparison-tag">Architecture Benchmark</span>
+        <h3 class="comparison-title">Walled Garden vs. RavenLabs Native Twin</h3>
+      </div>
+      <div class="comparison-grid">
+        <div class="comp-card comp-legacy">
+          <div class="comp-badge legacy-badge">Platform-Locked Model</div>
+          <h4 class="comp-col-title">Proprietary / Web Ports</h4>
+          <ul class="comp-features">
+            <li><span class="badge-icon cross">✕</span> Locked to single hardware manufacturer</li>
+            <li><span class="badge-icon cross">✕</span> 180MB+ idle memory footprint</li>
+            <li><span class="badge-icon cross">✕</span> 45ms+ UI latency with web-wrapper overhead</li>
+            <li><span class="badge-icon cross">✕</span> Mandatory telemetry &amp; background tracking</li>
+          </ul>
+        </div>
+        <div class="comp-card comp-raven spotlight-card">
+          <div class="comp-badge raven-badge">RavenLabs Native</div>
+          <h4 class="comp-col-title">Compiled Systems Twin (Rust)</h4>
+          <ul class="comp-features">
+            <li><span class="badge-icon check">✓</span> Universal freedom: Windows 11/10 &amp; Linux</li>
+            <li><span class="badge-icon check">✓</span> &lt; 14MB RAM footprint (Zero Chromium)</li>
+            <li><span class="badge-icon check">✓</span> Sub-millisecond (&lt; 0.4ms) instant responsiveness</li>
+            <li><span class="badge-icon check">✓</span> 100% offline-first, verified open code</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -255,23 +299,93 @@
         </div>
       </div>
 
-      <!-- Visual: App icon + floating notch demo -->
-      <div class="product-visual" aria-label="Raven Notch app preview">
+      <!-- Visual: Interactive Dynamic Island Simulator -->
+      <div class="product-visual" aria-label="Raven Notch live interactive simulation">
 
-        <!-- Floating notch demo -->
-        <div class="notch-demo" role="img" aria-label="Dynamic Island showing music playback">
-          <div class="notch-bars" aria-hidden="true">
-            <div class="nb"></div>
-            <div class="nb"></div>
-            <div class="nb"></div>
-            <div class="nb"></div>
-            <div class="nb"></div>
+        <div class="notch-simulator-container">
+          <!-- Mode Tabs -->
+          <div class="notch-mode-selector" role="tablist" aria-label="Dynamic Island modes">
+            <button class="notch-tab-btn active" data-mode="music" role="tab" aria-selected="true" type="button">
+              <span class="tab-indicator"></span>🎵 Audio
+            </button>
+            <button class="notch-tab-btn" data-mode="power" role="tab" aria-selected="false" type="button">
+              <span class="tab-indicator"></span>⚡ Power
+            </button>
+            <button class="notch-tab-btn" data-mode="stats" role="tab" aria-selected="false" type="button">
+              <span class="tab-indicator"></span>📊 Metrics
+            </button>
+            <button class="notch-tab-btn" data-mode="focus" role="tab" aria-selected="false" type="button">
+              <span class="tab-indicator"></span>⏱️ Focus
+            </button>
           </div>
-          <div class="notch-info">
-            <span class="notch-track-name">Midnight</span>
-            <span class="notch-track-artist">Odetika</span>
+
+          <!-- Dynamic Notch Island Widget -->
+          <div class="notch-demo interactive" id="interactive-notch" role="region" aria-label="Dynamic Island live simulation">
+            
+            <!-- Music View -->
+            <div class="notch-view-state notch-view-music active" data-view="music">
+              <div class="notch-left-content">
+                <button class="notch-media-toggle" id="notch-media-play" type="button" aria-label="Play or pause audio">
+                  <svg class="icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                  <svg class="icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <div class="notch-bars active" id="notch-visualizer" aria-hidden="true">
+                  <div class="nb"></div><div class="nb"></div><div class="nb"></div><div class="nb"></div><div class="nb"></div>
+                </div>
+              </div>
+              <div class="notch-info">
+                <span class="notch-track-name">Midnight Aura</span>
+                <span class="notch-track-artist">Raven Engine v0.1.5</span>
+              </div>
+              <div class="notch-right-content">
+                <span class="notch-time" id="notch-time">10:42</span>
+              </div>
+            </div>
+
+            <!-- Power / Battery View -->
+            <div class="notch-view-state notch-view-power" data-view="power">
+              <div class="notch-power-status">
+                <span class="power-pulse-ring" aria-hidden="true"></span>
+                <span class="power-label">Supercharging 96W</span>
+              </div>
+              <div class="notch-power-data">
+                <span class="power-pct">89%</span>
+                <span class="power-sub">24m to full</span>
+              </div>
+            </div>
+
+            <!-- Metrics / Telemetry View -->
+            <div class="notch-view-state notch-view-stats" data-view="stats">
+              <div class="notch-stat-col">
+                <span class="nstat-label">CPU</span>
+                <span class="nstat-val" id="notch-cpu-metric">4.8%</span>
+              </div>
+              <div class="notch-stat-divider"></div>
+              <div class="notch-stat-col">
+                <span class="nstat-label">RAM</span>
+                <span class="nstat-val">12.4 MB</span>
+              </div>
+              <div class="notch-stat-divider"></div>
+              <div class="notch-stat-col">
+                <span class="nstat-label">LATENCY</span>
+                <span class="nstat-val green">0.4 ms</span>
+              </div>
+            </div>
+
+            <!-- Focus / Timer View -->
+            <div class="notch-view-state notch-view-focus" data-view="focus">
+              <div class="notch-focus-mode">
+                <span class="focus-dot-pulse"></span>
+                <span>Deep Work</span>
+              </div>
+              <span class="notch-countdown-clock" id="notch-countdown">24:58</span>
+            </div>
+
           </div>
-          <span class="notch-time" id="notch-time">10:42</span>
+
+          <p class="notch-interactive-caption">
+            <span>✨ Interactive Simulator</span> • Click island or switch tabs to test physics
+          </p>
         </div>
 
         <!-- App icon -->
