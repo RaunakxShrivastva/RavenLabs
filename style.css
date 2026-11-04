@@ -938,6 +938,36 @@ section { border-bottom: 1px solid var(--line-strong); }
 /* ═══════════════════════════════════════
    FEATURES
 ═══════════════════════════════════════ */
+/* ─── Community Perspective Banner ─── */
+.community-banner {
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--bg);
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+.community-banner-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.community-banner-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+.community-banner-author {
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 #features { background: var(--bg-card); }
 
 .features-header {
