@@ -43,7 +43,11 @@
   if (themeBtn) {
     themeBtn.addEventListener('click', () => {
       const current = root.getAttribute('data-theme') || 'dark';
-      setTheme(current === 'dark' ? 'light' : 'dark');
+      const nextTheme = current === 'dark' ? 'light' : 'dark';
+      setTheme(nextTheme);
+      if (typeof playMusicalChime === 'function') {
+        playMusicalChime(nextTheme === 'light' ? [523.25, 659.25, 783.99] : [783.99, 659.25, 523.25]);
+      }
     });
   }
 
@@ -260,13 +264,34 @@
       const gain = ctx.createGain();
       osc.type = type;
       osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(freq * 0.5, ctx.currentTime + duration);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.45, ctx.currentTime + duration);
       gain.gain.setValueAtTime(gainVal, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start();
       osc.stop(ctx.currentTime + duration);
+    } catch {}
+  }
+
+  function playMusicalChime(notes = [523.25, 659.25]) {
+    if (!soundEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        const start = ctx.currentTime + i * 0.055;
+        osc.frequency.setValueAtTime(freq, start);
+        gain.gain.setValueAtTime(0.035, start);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.12);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + 0.12);
+      });
     } catch {}
   }
 
