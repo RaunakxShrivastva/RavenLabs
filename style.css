@@ -1156,6 +1156,26 @@ footer { border-top: 1px solid var(--line-strong); }
   text-transform: uppercase;
 }
 
+.footer-shortcuts {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+.shortcut-key {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--line);
+  border: 1px solid var(--line-strong);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+}
+
 /* ═══════════════════════════════════════
    REVEAL ANIMATIONS
 ═══════════════════════════════════════ */

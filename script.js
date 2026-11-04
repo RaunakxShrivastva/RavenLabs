@@ -381,6 +381,16 @@
     });
   })();
 
+  /* ─── 6. Global Keyboard Shortcuts (T for Theme, M for Sound) ─── */
+  window.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+    if (e.key === 't' || e.key === 'T') {
+      if (themeBtn) themeBtn.click();
+    } else if (e.key === 'm' || e.key === 'M') {
+      if (soundBtn) soundBtn.click();
+    }
+  });
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
