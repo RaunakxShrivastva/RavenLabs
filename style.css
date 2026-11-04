@@ -743,6 +743,128 @@ section { border-bottom: 1px solid var(--line-strong); }
     0 0 140px var(--accent-dim);
 }
 
+/* ─── Lab Pipeline Cards ─── */
+.pipeline-section {
+  margin-top: 4.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px dashed var(--line-strong);
+}
+
+.pipeline-header {
+  margin-bottom: 2rem;
+}
+.pipeline-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.pipeline-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.pipeline-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.pipeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.pipeline-card {
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  position: relative;
+  transition: transform 0.35s var(--ease), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.pipeline-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 16px 36px -10px rgba(0,0,0,0.25);
+}
+
+.pipeline-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+}
+.lab-id {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.lab-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.lab-tag.in-dev {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+.lab-tag.in-research {
+  background: rgba(168, 85, 247, 0.1);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.pipeline-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+.pipeline-card-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.pipeline-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+.meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+@media (max-width: 768px) {
+  .pipeline-grid { grid-template-columns: 1fr; }
+}
+
 /* ═══════════════════════════════════════
    PLATFORMS
 ═══════════════════════════════════════ */
