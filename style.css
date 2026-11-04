@@ -882,11 +882,32 @@ section { border-bottom: 1px solid var(--line-strong); }
   align-items: center;
   text-align: center;
   gap: 0.85rem;
+  position: relative;
   transition: background 0.2s ease;
   cursor: default;
 }
 .platform-item:last-child { border-right: none; }
 .platform-item:hover { background: var(--line); }
+
+.platform-status-pill {
+  position: absolute;
+  top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+}
+.platform-status-pill.live {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.25);
+}
 
 .platform-icon {
   width: 48px;
