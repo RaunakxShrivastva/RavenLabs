@@ -319,8 +319,18 @@ h1.hero-headline {
   color: var(--ink);
 }
 h1.hero-headline .accent {
-  color: var(--accent);
   font-style: italic;
+  background: linear-gradient(135deg, var(--accent) 0%, #a855f7 45%, #38bdf8 70%, var(--accent) 100%);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: accentShimmer 8s ease infinite;
+}
+
+@keyframes accentShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 .hero-headline-word {
   display: inline-block;
@@ -478,8 +488,12 @@ section { border-bottom: 1px solid var(--line-strong); }
   color: var(--ink);
 }
 .section-headline .accent {
-  color: var(--accent);
   font-style: italic;
+  background: linear-gradient(135deg, var(--accent) 0%, #a855f7 45%, #38bdf8 70%, var(--accent) 100%);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: accentShimmer 8s ease infinite;
 }
 
 .section-sub {
