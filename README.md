@@ -52,11 +52,22 @@ Our debut production release reimagines notch and dynamic island interaction mod
 
 ---
 
+## 🔬 Active Collective Experiments Pipeline
+
+Beyond Raven Notch, the collective is actively engineering native replacements for platform-locked desktop utilities:
+
+- **EXP-02 · Raven DropShelf**: Universal desktop drag-and-drop staging area for multi-monitor workspaces with zero-copy file buffer architecture.
+- **EXP-03 · Raven RayLauncher**: Sub-millisecond keyboard workflow palette and deep OS query system compiled natively without Chromium or Electron wrappers.
+
+---
+
 ## ✨ Web Experience & Motion Engine
 
 The RavenLabs brand website is crafted with zero-dependency native web standards:
 
-- **Synthesized Tactile Audio**: Ultra-low-latency micro-haptics generated in real-time via Web Audio API oscillators.
+- **Synthesized Tactile Audio**: Real-time micro-haptics generated via Web Audio API oscillators.
+- **Keyboard Shortcuts Navigation**: Press `T` for instant dark/light theme switching, `M` for audio mute/unmute.
+- **Click-to-Copy Micro-Toast**: Quick founder contact copying with haptic feedback.
 - **Spotlight Cursor Optics & 3D Tilt**: Perspective calculations following user cursor trajectory.
 - **Ambient Mesh Drift**: Fluid multi-layer glow shaders creating visual depth.
 
