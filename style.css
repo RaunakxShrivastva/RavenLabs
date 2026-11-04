@@ -1471,6 +1471,31 @@ footer { border-top: 1px solid var(--line-strong); }
   opacity: 1;
 }
 
+/* ─── Floating Toast Notification ─── */
+.toast-popup {
+  position: fixed;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  z-index: 99999;
+}
+.toast-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 @media (max-width: 768px) {
   .nav-sound-btn { display: none; }
 }

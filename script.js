@@ -391,6 +391,39 @@
     }
   });
 
+  /* ─── 7. Click-to-Copy with Floating Micro-Toast ─── */
+  const toast = document.getElementById('toast');
+  let toastTimer = null;
+
+  function showToast(message) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2200);
+  }
+
+  const copyTargets = [
+    { id: 'contact-email', text: 'raunakxshrivastva@gmail.com', label: 'Email copied to clipboard!' },
+    { id: 'contact-phone', text: '+919155695155', label: 'Phone copied to clipboard!' }
+  ];
+
+  copyTargets.forEach(({ id, text, label }) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('click', (e) => {
+      // If user holds Ctrl/Cmd or wants normal action, don't intercept; otherwise copy
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`✓ ${label}`);
+          playHapticTone(750, 0.04, 'triangle', 0.04);
+        }).catch(() => {});
+      }
+    });
+  });
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
