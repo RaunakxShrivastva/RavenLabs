@@ -457,6 +457,49 @@
     });
   }
 
+  /* ─── 9. Custom Ambient Trailing Cursor ─── */
+  const cursorDot = document.getElementById('cursor-dot');
+  const cursorRing = document.getElementById('cursor-ring');
+
+  if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let isCursorActive = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isCursorActive) {
+        isCursorActive = true;
+        document.body.classList.add('cursor-active');
+      }
+      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+      document.body.classList.remove('cursor-active');
+      isCursorActive = false;
+    });
+
+    // Smooth physics trailing loop
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
+      requestAnimationFrame(animateRing);
+    }
+    requestAnimationFrame(animateRing);
+
+    // Magnetic scale hover on interactive targets
+    const interactiveQuery = 'a, button, input, textarea, select, [role="button"], .platform-tab, .faq-item summary';
+    document.querySelectorAll(interactiveQuery).forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+  }
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
