@@ -65,7 +65,11 @@ Beyond Raven Notch, the collective is actively engineering native replacements f
 
 The RavenLabs brand website is crafted with zero-dependency native web standards:
 
-- **Synthesized Tactile Audio**: Real-time micro-haptics generated via Web Audio API oscillators.
+- **Early Access Dispatch**: Direct collective email signup pill with local client persistence and celebratory audio chime.
+- **Ambient Trailing Ring Cursor**: Fluid physics-interpolated dual-layer cursor with magnetic scale triggers on interactive elements.
+- **Systems Architecture Specs**: Embedded telemetry metrics highlighting Rust (Zero GC), Slint / DirectComposition, <14MB idle RAM, and <0.4ms native UI latency.
+- **Floating Back-to-Top**: Smooth scroll-triggered glassmorphic control with tactile haptic tone.
+- **Synthesized Tactile Audio**: Real-time micro-haptics generated dynamically via Web Audio API oscillators.
 - **Keyboard Shortcuts Navigation**: Press `T` for instant dark/light theme switching, `M` for audio mute/unmute.
 - **Click-to-Copy Micro-Toast**: Quick founder contact copying with haptic feedback.
 - **Spotlight Cursor Optics & 3D Tilt**: Perspective calculations following user cursor trajectory.
