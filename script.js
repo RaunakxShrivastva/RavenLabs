@@ -506,6 +506,25 @@
     yearEl.textContent = new Date().getFullYear();
   }
 
+  /* ─── 11. Floating Back-to-Top Button ─── */
+  const backToTopBtn = document.getElementById('back-to-top');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (typeof playHapticTone === 'function') {
+        playHapticTone(600, 0.05, 'sine', 0.04);
+      }
+    });
+  }
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
