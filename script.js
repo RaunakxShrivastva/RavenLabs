@@ -424,6 +424,39 @@
     });
   });
 
+  /* ─── 8. Dispatch Form Handling ─── */
+  const dispatchForm = document.getElementById('dispatch-form');
+  const dispatchInput = document.getElementById('dispatch-email');
+  const dispatchBtn = document.getElementById('dispatch-submit-btn');
+
+  if (dispatchForm && dispatchInput && dispatchBtn) {
+    const btnText = dispatchBtn.querySelector('.dispatch-btn-text');
+    dispatchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = dispatchInput.value.trim();
+      if (!email || !email.includes('@')) return;
+
+      try {
+        localStorage.setItem('ravenlabs_subscriber', email);
+      } catch {}
+
+      if (btnText) btnText.textContent = '✓ Subscribed!';
+      dispatchBtn.style.background = '#10b981';
+      dispatchBtn.style.color = '#ffffff';
+      if (typeof playMusicalChime === 'function') {
+        playMusicalChime([523.25, 659.25, 783.99, 1046.50]);
+      }
+      showToast('✓ Welcome to the collective dispatch!');
+
+      setTimeout(() => {
+        dispatchInput.value = '';
+        if (btnText) btnText.textContent = 'Get Access';
+        dispatchBtn.style.background = '';
+        dispatchBtn.style.color = '';
+      }, 3500);
+    });
+  }
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
