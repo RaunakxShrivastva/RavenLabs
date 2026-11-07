@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /.git/
+Disallow: /.github/
 
+# Host specification
+Host: https://ravenlabs.dev
+
+# XML Sitemap Index
 Sitemap: https://ravenlabs.dev/sitemap.xml
