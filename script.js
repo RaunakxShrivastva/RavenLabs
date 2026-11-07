@@ -398,6 +398,14 @@
       if (typeof playHapticTone === 'function') {
         playHapticTone(580, 0.05, 'sine', 0.03);
       }
+    } else if (e.key === 'Escape') {
+      if (toast && toast.classList.contains('show')) {
+        toast.classList.remove('show');
+        clearTimeout(toastTimer);
+      }
+      if (document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
+      }
     }
   });
 
