@@ -1728,3 +1728,15 @@ body.cursor-hover .cursor-ring {
   .nav-sound-btn { display: none; }
 }
 
+/* ─── Motion Accessibility (WCAG 2.1) ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal-item { opacity: 1 !important; transform: none !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
+
