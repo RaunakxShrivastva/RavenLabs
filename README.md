@@ -70,7 +70,8 @@ The RavenLabs brand website is crafted with zero-dependency native web standards
 - **Systems Architecture Specs**: Embedded telemetry metrics highlighting Rust (Zero GC), Slint / DirectComposition, <14MB idle RAM, and <0.4ms native UI latency.
 - **Floating Back-to-Top**: Smooth scroll-triggered glassmorphic control with tactile haptic tone.
 - **Synthesized Tactile Audio**: Real-time micro-haptics generated dynamically via Web Audio API oscillators.
-- **Keyboard Shortcuts Navigation**: Press `T` for instant dark/light theme switching, `M` for audio mute/unmute.
+- **SEO & Search Rich Snippets**: Schema.org JSON-LD graph metadata for verified Organization and SoftwareApplication entities.
+- **Keyboard Shortcuts Navigation**: Press `T` for instant dark/light theme switching, `M` for audio mute/unmute, `?` for shortcuts help toast, and `B` for smooth scroll to top.
 - **Click-to-Copy Micro-Toast**: Quick founder contact copying with haptic feedback.
 - **Spotlight Cursor Optics & 3D Tilt**: Perspective calculations following user cursor trajectory.
 - **Ambient Mesh Drift**: Fluid multi-layer glow shaders creating visual depth.
