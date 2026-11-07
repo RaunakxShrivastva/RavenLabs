@@ -1127,7 +1127,22 @@ section { border-bottom: 1px solid var(--line-strong); }
   overflow: hidden;
 }
 .feature-card:last-child { border-right: none; }
-.feature-card:hover { background: var(--bg); }
+.feature-card:hover {
+  background: var(--bg);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* Glass specular shine highlight */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.feature-card:hover::before { opacity: 1; }
 
 /* Accent bar slide-in on hover */
 .feature-card::after {
