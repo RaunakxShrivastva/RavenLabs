@@ -689,7 +689,7 @@
       <span class="shortcut-label">Hotkeys:</span>
       <kbd class="shortcut-key">T</kbd> <span>Theme</span>
       <kbd class="shortcut-key">M</kbd> <span>Audio</span>
-      <kbd class="shortcut-key">?</kbd> <span>Help</span>
+      <button type="button" class="footer-help-trigger" id="footer-help-trigger" aria-label="Open keyboard shortcuts help"><kbd class="shortcut-key">?</kbd> <span>Help</span></button>
     </div>
 
     <p class="footer-copy">© <span id="copyright-year">2026</span> RavenLabs. All rights reserved.</p>
@@ -698,6 +698,39 @@
 
 <!-- Screen reader only utility -->
 <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;}</style>
+
+<!-- Keyboard Shortcuts Modal Dialog -->
+<div id="shortcuts-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-shortcuts-title" hidden>
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-title-group">
+        <span class="modal-badge">Hotkeys</span>
+        <h3 id="modal-shortcuts-title" class="modal-title">Keyboard Navigation</h3>
+      </div>
+      <button id="modal-close-btn" class="modal-close-btn" type="button" aria-label="Close shortcuts modal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-shortcuts-list">
+      <div class="modal-shortcut-row">
+        <span class="shortcut-desc">Toggle Dark / Light theme</span>
+        <kbd class="shortcut-key">T</kbd>
+      </div>
+      <div class="modal-shortcut-row">
+        <span class="shortcut-desc">Toggle tactile audio SFX</span>
+        <kbd class="shortcut-key">M</kbd>
+      </div>
+      <div class="modal-shortcut-row">
+        <span class="shortcut-desc">Open shortcuts cheat-sheet</span>
+        <kbd class="shortcut-key">?</kbd>
+      </div>
+      <div class="modal-shortcut-row">
+        <span class="shortcut-desc">Dismiss modals &amp; toasts</span>
+        <kbd class="shortcut-key">Esc</kbd>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Floating Micro-Toast Notification -->
 <div id="toast" class="toast-popup" role="status" aria-live="polite"></div>

@@ -382,6 +382,34 @@
   })();
 
   /* ─── 6. Global Keyboard Shortcuts (T: Theme, M: Sound, ?: Help, B: Back to top) ─── */
+  const shortcutsModal = document.getElementById('shortcuts-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const footerHelpTrigger = document.getElementById('footer-help-trigger');
+
+  function openShortcutsModal() {
+    if (!shortcutsModal) return;
+    shortcutsModal.removeAttribute('hidden');
+    if (typeof playMusicalChime === 'function') {
+      playMusicalChime([440, 554.37, 659.25]);
+    }
+  }
+
+  function closeShortcutsModal() {
+    if (!shortcutsModal || shortcutsModal.hasAttribute('hidden')) return;
+    shortcutsModal.setAttribute('hidden', '');
+    if (typeof playHapticTone === 'function') {
+      playHapticTone(440, 0.04, 'sine', 0.03);
+    }
+  }
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeShortcutsModal);
+  if (footerHelpTrigger) footerHelpTrigger.addEventListener('click', openShortcutsModal);
+  if (shortcutsModal) {
+    shortcutsModal.addEventListener('click', (e) => {
+      if (e.target === shortcutsModal) closeShortcutsModal();
+    });
+  }
+
   window.addEventListener('keydown', (e) => {
     if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
     if (e.key === 't' || e.key === 'T') {
@@ -389,9 +417,11 @@
     } else if (e.key === 'm' || e.key === 'M') {
       if (soundBtn) soundBtn.click();
     } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
-      showToast('⌨️ Shortcuts: [T] Theme • [M] Audio • [B] Top');
-      if (typeof playHapticTone === 'function') {
-        playHapticTone(520, 0.06, 'triangle', 0.04);
+      e.preventDefault();
+      if (shortcutsModal && !shortcutsModal.hasAttribute('hidden')) {
+        closeShortcutsModal();
+      } else {
+        openShortcutsModal();
       }
     } else if (e.key === 'b' || e.key === 'B') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -399,6 +429,7 @@
         playHapticTone(580, 0.05, 'sine', 0.03);
       }
     } else if (e.key === 'Escape') {
+      closeShortcutsModal();
       if (toast && toast.classList.contains('show')) {
         toast.classList.remove('show');
         clearTimeout(toastTimer);

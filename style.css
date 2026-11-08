@@ -1375,6 +1375,21 @@ footer { border-top: 1px solid var(--line-strong); }
   color: var(--ink);
   box-shadow: 0 1px 0 rgba(0,0,0,0.1);
 }
+.footer-help-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.footer-help-trigger:hover .shortcut-key {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 
 /* ═══════════════════════════════════════
    REVEAL ANIMATIONS
@@ -1674,6 +1689,90 @@ footer { border-top: 1px solid var(--line-strong); }
 }
 .spotlight-card:hover::before, .product-card:hover::before, .feature-card:hover::before, .milestone-item:hover::before {
   opacity: 1;
+}
+
+/* ─── Keyboard Shortcuts Modal ─── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 11, 12, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease);
+}
+.modal-backdrop:not([hidden]) {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  padding: 1.8rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.25s var(--ease);
+}
+.modal-backdrop:not([hidden]) .modal-card {
+  transform: translateY(0) scale(1);
+}
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+.modal-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.modal-title {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 4px;
+}
+.modal-close-btn {
+  color: var(--muted);
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+.modal-close-btn:hover {
+  color: var(--ink);
+  background: var(--line);
+}
+.modal-shortcuts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.modal-shortcut-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.shortcut-desc {
+  font-size: 0.88rem;
+  color: var(--ink);
 }
 
 /* ─── Floating Toast Notification ─── */
