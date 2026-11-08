@@ -558,6 +558,20 @@
     );
   } catch {}
 
+  /* ─── 13. Real-Time Nav System Clock ─── */
+  const navClock = document.getElementById('nav-clock');
+  if (navClock) {
+    function updateNavClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      navClock.textContent = `${h}:${m}:${s}`;
+    }
+    updateNavClock();
+    setInterval(updateNavClock, 1000);
+  }
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
