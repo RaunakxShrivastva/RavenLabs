@@ -19,6 +19,8 @@
     root.setAttribute('data-theme', t);
     try { localStorage.setItem(STORAGE_KEY, t); } catch {}
     updateThemeIcon(t);
+    const meta = document.querySelector('meta[name="theme-color"]:not([media])');
+    if (meta) meta.setAttribute('content', t === 'dark' ? '#0b0b0c' : '#f2f1ee');
   }
 
   function updateThemeIcon(t) {
@@ -32,12 +34,19 @@
   // Init theme: saved → prefers-color-scheme → dark default
   (function initTheme() {
     const saved = getTheme();
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     if (saved === 'light' || saved === 'dark') {
       setTheme(saved);
     } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
+      setTheme(mediaQuery.matches ? 'dark' : 'light');
     }
+
+    // Dynamic OS system preference synchronization
+    mediaQuery.addEventListener('change', (e) => {
+      if (!getTheme()) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
   })();
 
   if (themeBtn) {
