@@ -543,6 +543,21 @@
     });
   }
 
+  /* ─── 12. DevTools Console Engineering Banner ─── */
+  try {
+    const bannerStyle1 = 'background: #0b0b0c; color: #4f8ef7; font-size: 14px; font-weight: bold; padding: 6px 12px; border-radius: 4px; border: 1px solid #2563eb; font-family: monospace;';
+    const bannerStyle2 = 'color: #888683; font-size: 11px; font-family: monospace; line-height: 1.5;';
+    console.log('%c🦅 RavenLabs — Native Systems Collective', bannerStyle1);
+    console.log(
+      '%c"Dismantling artificial platform borders through high-performance engineering."\n' +
+      '• Founder: Raunak Shrivastva (https://github.com/RaunakxShrivastva)\n' +
+      '• Flagship: Raven Notch (https://ravennotch.me)\n' +
+      '• Hotkeys: Press [T] for Theme Toggle | [M] for Audio Toggle\n' +
+      '• Telemetry: 100% Offline, Zero Trackers',
+      bannerStyle2
+    );
+  } catch {}
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
