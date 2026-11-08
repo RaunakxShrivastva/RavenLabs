@@ -768,6 +768,40 @@ section { border-bottom: 1px solid var(--line-strong); }
   display: flex;
   flex-direction: column;
   gap: 2px;
+  position: relative;
+  cursor: help;
+  transition: transform 0.2s ease;
+}
+.spec-item:hover {
+  transform: translateY(-1px);
+}
+.spec-item:hover .spec-val {
+  color: var(--accent);
+}
+.spec-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  width: 190px;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.spec-item:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 .spec-label {
   font-family: var(--font-mono);
