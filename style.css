@@ -1628,6 +1628,29 @@ footer { border-top: 1px solid var(--line-strong); }
 .nav-sound-btn.active {
   color: var(--accent);
 }
+.sound-waves {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  margin-left: 3px;
+}
+.sw-bar {
+  width: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  animation: swAnim 0.8s ease-in-out infinite alternate;
+}
+.sw-bar:nth-child(1) { height: 5px; animation-delay: 0.1s; }
+.sw-bar:nth-child(2) { height: 11px; animation-delay: 0.3s; }
+.sw-bar:nth-child(3) { height: 7px; animation-delay: 0.2s; }
+.nav-sound-btn:not(.active) .sound-waves {
+  display: none;
+}
+@keyframes swAnim {
+  0% { transform: scaleY(0.35); }
+  100% { transform: scaleY(1); }
+}
 
 /* ─── Spotlight Cursor Card Effect ─── */
 .spotlight-card, .product-card, .feature-card, .milestone-item {
