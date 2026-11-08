@@ -347,6 +347,7 @@ h1.hero-headline {
   line-height: 1.07;
   letter-spacing: -0.02em;
   color: var(--ink);
+  text-wrap: balance;
 }
 h1.hero-headline .accent {
   font-style: italic;
@@ -584,6 +585,7 @@ section { border-bottom: 1px solid var(--line-strong); }
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--ink);
+  text-wrap: balance;
 }
 .section-headline .accent {
   font-style: italic;
@@ -600,6 +602,7 @@ section { border-bottom: 1px solid var(--line-strong); }
   max-width: 480px;
   line-height: 1.72;
   margin-top: 1rem;
+  text-wrap: pretty;
 }
 
 /* ═══════════════════════════════════════
@@ -719,6 +722,7 @@ section { border-bottom: 1px solid var(--line-strong); }
   letter-spacing: -0.02em;
   color: var(--ink);
   margin-bottom: 0.75rem;
+  text-wrap: balance;
 }
 
 .product-tagline {
@@ -726,6 +730,7 @@ section { border-bottom: 1px solid var(--line-strong); }
   color: var(--muted);
   margin-bottom: 1.5rem;
   line-height: 1.65;
+  text-wrap: pretty;
 }
 
 .product-tags {
