@@ -617,6 +617,19 @@
     setInterval(updateNavClock, 1000);
   }
 
+  /* ─── 14. Zero-Telemetry Local Session Counter ─── */
+  const visitCounter = document.getElementById('visit-counter');
+  if (visitCounter) {
+    try {
+      let count = parseInt(localStorage.getItem('ravenlabs_session_count') || '0', 10);
+      count += 1;
+      localStorage.setItem('ravenlabs_session_count', String(count));
+      visitCounter.textContent = `Local Session #${count}`;
+    } catch {
+      visitCounter.textContent = '100% Offline';
+    }
+  }
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();

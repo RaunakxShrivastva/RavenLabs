@@ -1439,6 +1439,36 @@ footer { border-top: 1px solid var(--line-strong); }
   color: var(--accent);
 }
 
+.footer-privacy {
+  display: flex;
+  align-items: center;
+}
+.privacy-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  user-select: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.privacy-pill:hover {
+  border-color: #10b981;
+  color: var(--ink);
+}
+.privacy-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+}
+
 /* ═══════════════════════════════════════
    REVEAL ANIMATIONS
 ═══════════════════════════════════════ */
