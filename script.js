@@ -480,10 +480,24 @@
 
   if (dispatchForm && dispatchInput && dispatchBtn) {
     const btnText = dispatchBtn.querySelector('.dispatch-btn-text');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
     dispatchForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = dispatchInput.value.trim();
-      if (!email || !email.includes('@')) return;
+
+      if (!email || !emailRegex.test(email)) {
+        dispatchForm.classList.remove('form-shake');
+        void dispatchForm.offsetWidth; // Force reflow
+        dispatchForm.classList.add('form-shake');
+        if (typeof playHapticTone === 'function') {
+          playHapticTone(240, 0.08, 'sawtooth', 0.05);
+        }
+        showToast('⚠ Please enter a valid email address');
+        dispatchInput.focus();
+        setTimeout(() => dispatchForm.classList.remove('form-shake'), 450);
+        return;
+      }
 
       try {
         localStorage.setItem('ravenlabs_subscriber', email);

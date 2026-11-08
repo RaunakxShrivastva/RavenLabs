@@ -400,6 +400,15 @@ h1.hero-headline .accent {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-dim), 0 14px 34px -8px rgba(0,0,0,0.25);
 }
+.hero-dispatch-form.form-shake {
+  animation: formShake 0.4s ease;
+  border-color: #ef4444 !important;
+}
+@keyframes formShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
 
 .dispatch-input {
   flex: 1;
