@@ -482,6 +482,25 @@
     });
   });
 
+  /* ─── Hero Quick-Clone Snippet Copy Handler ─── */
+  const cliCopyBtn = document.getElementById('cli-copy-btn');
+  if (cliCopyBtn) {
+    const cloneCmd = 'git clone https://github.com/RaunakxShrivastva/RavenLabs.git';
+    const labelSpan = cliCopyBtn.querySelector('.cli-copy-label');
+    cliCopyBtn.addEventListener('click', () => {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(cloneCmd).then(() => {
+          showToast('✓ Clone command copied to clipboard!');
+          if (typeof playMusicalChime === 'function') {
+            playMusicalChime([523.25, 659.25, 783.99]);
+          }
+          if (labelSpan) labelSpan.textContent = 'Copied!';
+          setTimeout(() => { if (labelSpan) labelSpan.textContent = 'Copy'; }, 2500);
+        }).catch(() => {});
+      }
+    });
+  }
+
   /* ─── 8. Dispatch Form Handling ─── */
   const dispatchForm = document.getElementById('dispatch-form');
   const dispatchInput = document.getElementById('dispatch-email');
