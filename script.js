@@ -784,6 +784,14 @@
     readTimeEl.textContent = `${minutes} min collective read`;
   })();
 
+    /* ─── 20. Keyboard Shortcut [/] quick focus navigation ─── */
+  window.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+    if (e.key === '?') {
+      showToast('Shortcuts: [H] Home · [C] Copy Clone · [T] Toggle Theme');
+    }
+  });
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
