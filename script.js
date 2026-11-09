@@ -435,6 +435,13 @@
       if (themeBtn) themeBtn.click();
     } else if (e.key === 'm' || e.key === 'M') {
       if (soundBtn) soundBtn.click();
+    } else if (e.key === 'c' || e.key === 'C') {
+      if (cliCopyBtn) cliCopyBtn.click();
+    } else if (e.key === 'h' || e.key === 'H') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (typeof playHapticTone === 'function') {
+        playHapticTone(580, 0.05, 'sine', 0.03);
+      }
     } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
       e.preventDefault();
       if (shortcutsModal && !shortcutsModal.hasAttribute('hidden')) {
