@@ -732,6 +732,34 @@
     if (!navigator.onLine) updateNetworkStatus();
   }
 
+  /* ─── 18. Native PWA Install Prompt Handler ─── */
+  let deferredPrompt = null;
+  const pwaBtn = document.getElementById('pwa-install-btn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (pwaBtn) pwaBtn.removeAttribute('hidden');
+  });
+
+  if (pwaBtn) {
+    pwaBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        showToast('✓ RavenLabs installed to your system!');
+        pwaBtn.setAttribute('hidden', '');
+      }
+      deferredPrompt = null;
+    });
+  }
+
+  window.addEventListener('appinstalled', () => {
+    if (pwaBtn) pwaBtn.setAttribute('hidden', '');
+    showToast('✓ RavenLabs successfully installed');
+  });
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();

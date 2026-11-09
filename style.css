@@ -1783,6 +1783,33 @@ footer { border-top: 1px solid var(--line-strong); }
   .nav-clock { display: none; }
 }
 
+/* ─── PWA Standalone Install Button ─── */
+.nav-pwa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 12px;
+  border-right: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-pwa-btn:hover {
+  background: var(--line);
+  color: var(--ink);
+}
+.nav-pwa-btn[hidden] {
+  display: none !important;
+}
+@media (max-width: 900px) {
+  .nav-pwa-btn { display: none !important; }
+}
+
 /* ─── Tactile Audio SFX Toggle Button in Nav ─── */
 .nav-sound-btn {
   display: inline-flex;
