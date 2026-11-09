@@ -767,6 +767,17 @@
     showToast('✓ RavenLabs successfully installed');
   });
 
+  /* ─── 19. Dynamic Reading Time Estimation ─── */
+  (function initReadingTime() {
+    const mainEl = document.getElementById('main');
+    const readTimeEl = document.getElementById('read-time-text');
+    if (!mainEl || !readTimeEl) return;
+    const text = mainEl.innerText || '';
+    const wordCount = text.trim().split(/\s+/).length;
+    const minutes = Math.max(1, Math.round(wordCount / 200));
+    readTimeEl.textContent = `${minutes} min collective read`;
+  })();
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
