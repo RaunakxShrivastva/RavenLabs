@@ -21,6 +21,16 @@
     updateThemeIcon(t);
     const meta = document.querySelector('meta[name="theme-color"]:not([media])');
     if (meta) meta.setAttribute('content', t === 'dark' ? '#0b0b0c' : '#f2f1ee');
+    updateFavicon(t);
+  }
+
+  function updateFavicon(t) {
+    const fav = document.getElementById('site-favicon');
+    if (!fav) return;
+    const bg = t === 'dark' ? '%230b0b0c' : '%23f2f1ee';
+    const fg = t === 'dark' ? 'white' : '%230b0b0c';
+    const eye = t === 'dark' ? '%234f8ef7' : '%232563eb';
+    fav.href = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='${bg}' stroke='${fg}' stroke-width='0.5'/%3E%3Cpath d='M10 8 Q16 6 22 12 Q18 14 16 20 Q13 14 10 8Z' fill='${fg}' opacity='0.85'/%3E%3Cpath d='M8 14 Q14 10 22 14 Q16 18 8 22 Z' fill='${fg}' opacity='0.3'/%3E%3Ccircle cx='21' cy='11' r='2' fill='${eye}'/%3E%3C/svg%3E`;
   }
 
   function updateThemeIcon(t) {
