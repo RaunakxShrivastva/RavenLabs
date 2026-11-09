@@ -2048,6 +2048,31 @@ footer { border-top: 1px solid var(--line-strong); }
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
+.btt-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+.btt-ring-bg {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 2.2;
+}
+.btt-ring-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-dasharray: 113.1;
+  stroke-dashoffset: 113.1;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.1s linear;
+}
+.btt-arrow {
+  position: relative;
+  z-index: 1;
+}
 @media (max-width: 640px) {
   .back-to-top {
     bottom: 1.5rem;

@@ -775,9 +775,13 @@
 <!-- Floating Micro-Toast Notification -->
 <div id="toast" class="toast-popup" role="status" aria-live="polite"></div>
 
-<!-- Floating Back to Top Button -->
+<!-- Floating Back to Top Button with Circular Progress Ring -->
 <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top" title="Back to top">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  <svg class="btt-ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+    <circle class="btt-ring-bg" cx="22" cy="22" r="18"/>
+    <circle class="btt-ring-fill" id="btt-ring-fill" cx="22" cy="22" r="18"/>
+  </svg>
+  <svg class="btt-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
 </button>
 
 <!-- Custom Ambient Cursor (Desktop only) -->

@@ -616,8 +616,14 @@
 
   /* ─── 11. Floating Back-to-Top Button ─── */
   const backToTopBtn = document.getElementById('back-to-top');
+  const bttRingFill = document.getElementById('btt-ring-fill');
   if (backToTopBtn) {
     window.addEventListener('scroll', () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? Math.min(Math.max(window.scrollY / scrollHeight, 0), 1) : 0;
+      if (bttRingFill) {
+        bttRingFill.style.strokeDashoffset = String(113.1 - (113.1 * progress));
+      }
       if (window.scrollY > 400) {
         backToTopBtn.classList.add('visible');
       } else {
