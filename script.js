@@ -646,6 +646,34 @@
     });
   }
 
+  /* ─── 16. Navigation ScrollSpy ─── */
+  (function initScrollSpy() {
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+    if (!navAnchors.length || !('IntersectionObserver' in window)) return;
+
+    const sections = Array.from(navAnchors).map(a => {
+      const id = a.getAttribute('href').slice(1);
+      return document.getElementById(id);
+    }).filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navAnchors.forEach(a => {
+            if (a.getAttribute('href') === `#${id}`) {
+              a.classList.add('active');
+            } else {
+              a.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  })();
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
