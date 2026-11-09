@@ -693,6 +693,35 @@
     sections.forEach(s => observer.observe(s));
   })();
 
+  /* ─── 17. Real-Time Network Status Observer ─── */
+  const navStatusBadge = document.getElementById('nav-status-badge');
+  if (navStatusBadge) {
+    function updateNetworkStatus() {
+      if (navigator.onLine) {
+        navStatusBadge.classList.remove('offline');
+        navStatusBadge.innerHTML = '<span class="status-dot" aria-hidden="true"></span>Active';
+      } else {
+        navStatusBadge.classList.add('offline');
+        navStatusBadge.innerHTML = '<span class="status-dot" aria-hidden="true"></span>Offline Cached';
+      }
+    }
+    window.addEventListener('online', () => {
+      updateNetworkStatus();
+      showToast('✓ Collective connection restored — online');
+      if (typeof playMusicalChime === 'function') {
+        playMusicalChime([523.25, 659.25, 783.99]);
+      }
+    });
+    window.addEventListener('offline', () => {
+      updateNetworkStatus();
+      showToast('⚡ Offline mode active — running from local cache');
+      if (typeof playHapticTone === 'function') {
+        playHapticTone(330, 0.08, 'sawtooth', 0.04);
+      }
+    });
+    if (!navigator.onLine) updateNetworkStatus();
+  }
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
