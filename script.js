@@ -818,6 +818,37 @@
     }
   });
 
+  /* ─── 22. Section Anchor Deep-Link Copy ─── */
+  (function initSectionAnchors() {
+    document.querySelectorAll('.section-headline[id]').forEach(h => {
+      const section = h.closest('section');
+      if (!section || !section.id) return;
+      const anchor = document.createElement('a');
+      anchor.className = 'section-anchor';
+      anchor.href = `#${section.id}`;
+      anchor.setAttribute('aria-label', `Direct link to ${section.id}`);
+      anchor.title = 'Copy direct link to section';
+      anchor.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = `${window.location.origin}${window.location.pathname}#${section.id}`;
+        history.pushState(null, '', `#${section.id}`);
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(() => {
+            showToast(`✓ Copied link to #${section.id}`);
+            if (typeof playHapticTone === 'function') {
+              playHapticTone(720, 0.04, 'sine', 0.03);
+            }
+          }).catch(() => {});
+        }
+        section.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      h.appendChild(anchor);
+    });
+  })();
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();

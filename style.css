@@ -694,6 +694,27 @@ section { border-bottom: 1px solid var(--line-strong); }
   letter-spacing: -0.02em;
   color: var(--ink);
   text-wrap: balance;
+  position: relative;
+}
+.section-anchor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  margin-left: 10px;
+  color: var(--accent);
+  vertical-align: middle;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateX(-4px);
+  cursor: pointer;
+}
+.section-headline:hover .section-anchor {
+  opacity: 0.85;
+  transform: translateX(0);
+}
+.section-anchor:hover {
+  opacity: 1 !important;
 }
 .section-headline .accent {
   font-style: italic;
