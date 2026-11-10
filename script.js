@@ -442,6 +442,8 @@
       if (typeof playHapticTone === 'function') {
         playHapticTone(580, 0.05, 'sine', 0.03);
       }
+    } else if (e.key === 'f' || e.key === 'F') {
+      toggleFpsHUD();
     } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
       e.preventDefault();
       if (shortcutsModal && !shortcutsModal.hasAttribute('hidden')) {
@@ -848,6 +850,52 @@
       h.appendChild(anchor);
     });
   })();
+
+  /* ─── 23. Live FPS & Frame Latency Sampling HUD ─── */
+  const fpsMeter = document.getElementById('fps-meter');
+  const fpsValEl = document.getElementById('fps-val');
+  const fpsMsEl = document.getElementById('fps-ms');
+  let fpsRunning = false;
+  let lastFrameTime = performance.now();
+  let frameCount = 0;
+  let lastSampleTime = performance.now();
+
+  function toggleFpsHUD() {
+    if (!fpsMeter) return;
+    if (fpsMeter.hasAttribute('hidden')) {
+      fpsMeter.removeAttribute('hidden');
+      fpsRunning = true;
+      lastFrameTime = performance.now();
+      lastSampleTime = performance.now();
+      frameCount = 0;
+      requestAnimationFrame(sampleFPS);
+      showToast('⚡ Live telemetry HUD enabled');
+      if (typeof playMusicalChime === 'function') {
+        playMusicalChime([587.33, 739.99]);
+      }
+    } else {
+      fpsMeter.setAttribute('hidden', '');
+      fpsRunning = false;
+      showToast('Telemetry HUD hidden');
+    }
+  }
+
+  function sampleFPS(now) {
+    if (!fpsRunning) return;
+    frameCount++;
+    const delta = now - lastFrameTime;
+    lastFrameTime = now;
+
+    if (now - lastSampleTime >= 500) {
+      const fps = Math.round((frameCount * 1000) / (now - lastSampleTime));
+      const ms = delta.toFixed(1);
+      if (fpsValEl) fpsValEl.textContent = String(fps);
+      if (fpsMsEl) fpsMsEl.textContent = ms;
+      frameCount = 0;
+      lastSampleTime = now;
+    }
+    requestAnimationFrame(sampleFPS);
+  }
 
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {

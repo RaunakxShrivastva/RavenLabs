@@ -821,6 +821,10 @@
         <kbd class="shortcut-key">H</kbd>
       </div>
       <div class="modal-shortcut-row">
+        <span class="shortcut-desc">Toggle Frame Rate HUD</span>
+        <kbd class="shortcut-key">F</kbd>
+      </div>
+      <div class="modal-shortcut-row">
         <span class="shortcut-desc">Open shortcuts cheat-sheet</span>
         <kbd class="shortcut-key">?</kbd>
       </div>
@@ -830,6 +834,12 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- Live Frame Rate & Render Latency HUD -->
+<div id="fps-meter" class="fps-meter" aria-label="Live rendering telemetry" title="Live Frame Rate & Render Latency (Press F to toggle)" hidden>
+  <span class="fps-dot" aria-hidden="true"></span>
+  <span id="fps-val">--</span> FPS · <span id="fps-ms">--</span>ms
 </div>
 
 <!-- Floating Micro-Toast Notification -->
