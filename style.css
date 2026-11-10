@@ -1469,6 +1469,13 @@ section { border-bottom: 1px solid var(--line-strong); }
   line-height: 1.65;
   text-wrap: pretty;
 }
+.faq-answer p {
+  animation: faqFadeIn 0.25s var(--ease);
+}
+@keyframes faqFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* ═══════════════════════════════════════
    FOUNDER

@@ -784,7 +784,33 @@
     readTimeEl.textContent = `${minutes} min collective read`;
   })();
 
-    /* ─── 20. Keyboard Shortcut [/] quick focus navigation ─── */
+  /* ─── 20. Exclusive FAQ Accordion & Tactile Sound ─── */
+  (function initFaqAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(item => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          if (typeof playHapticTone === 'function') {
+            playHapticTone(640, 0.04, 'sine', 0.03);
+          }
+          // Close other open accordions
+          faqItems.forEach(other => {
+            if (other !== item && other.open) {
+              other.open = false;
+            }
+          });
+        } else {
+          if (typeof playHapticTone === 'function') {
+            playHapticTone(460, 0.03, 'sine', 0.02);
+          }
+        }
+      });
+    });
+  })();
+
+  /* ─── 21. Keyboard Shortcut [/] quick focus navigation ─── */
   window.addEventListener('keydown', (e) => {
     if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
     if (e.key === '?') {
