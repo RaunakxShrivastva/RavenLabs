@@ -132,6 +132,7 @@
         <a href="#products">Products</a>
         <a href="#platforms">Platforms</a>
         <a href="#milestones">Story</a>
+        <a href="#faq">FAQ</a>
         <a href="#founder">Founder</a>
       </nav>
     </div>
@@ -646,6 +647,65 @@
         <p class="milestone-label">RavenLabs Founded</p>
         <p class="milestone-desc">A vision turned into a brand</p>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FAQ / ARCHITECTURE NOTES
+═══════════════════════════════════════ -->
+<section id="faq" aria-labelledby="faq-headline">
+  <div class="section-inner">
+    <p class="section-tag reveal-item">Architecture</p>
+    <h2 class="section-headline reveal-item" id="faq-headline">
+      Frequently asked<br><em class="accent">questions.</em>
+    </h2>
+    <p class="section-sub reveal-item">
+      Technical transparency on how RavenLabs software is designed, compiled, and executed.
+    </p>
+
+    <div class="faq-accordion reveal-item">
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span class="faq-question">Why compile natively with Rust instead of using web wrappers like Electron?</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Web frameworks bundle entire Chromium runtimes and V8 engines, consuming hundreds of megabytes of RAM and introducing garbage collection pauses. RavenLabs utilities compile directly to native machine code with zero GC pauses, sub-millisecond input response, and an idle memory footprint under 14MB.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span class="faq-question">How does DirectComposition achieve sub-millisecond rendering latency?</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>On Windows, DirectComposition bypasses the traditional GDI layer to composite UI visual trees directly on the GPU Desktop Window Manager (DWM). On Linux, native Wayland subsurface protocols provide equivalent hardware-accelerated presentation with no compositor-induced overhead.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span class="faq-question">Is Raven Notch and collective software 100% telemetry-free?</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Yes. Our binaries make zero background analytics pings, send no telemetry payloads, and require no user registration to run. Software executes entirely offline on your local device. What happens on your machine stays on your machine.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span class="faq-question">How can I contribute or follow upcoming experiments?</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>All core repositories are published publicly under the MIT license on GitHub. You can follow experimental prototypes like DropShelf and RayLauncher on our collective GitHub or subscribe via the early access dispatch.</p>
+        </div>
+      </details>
 
     </div>
   </div>
