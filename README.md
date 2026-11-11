@@ -11,7 +11,7 @@
   [![First Product](https://img.shields.io/badge/Flagship-Raven_Notch-purple.svg?style=flat-square)](https://ravennotch.me)
   [![Platform](https://img.shields.io/badge/Platforms-Windows_%7C_Linux-0078D6.svg?style=flat-square)](#platform-support)
 
-  [Overview](#-the-philosophy) • [Products](#-flagship-products) • [Architecture](#-design--tech-stack) • [Roadmap](#-roadmap) • [Contributing](#-contributing)
+  [Overview](#-the-philosophy) • [Products](#-flagship-products) • [Architecture](#-design--tech-stack) • [Roadmap](#-roadmap) • [Changelog](CHANGELOG.md) • [Contributing](#-contributing)
 
 </div>
 
@@ -175,6 +175,12 @@ We welcome thinkers, systems engineers, UI/UX designers, and reverse-engineers w
 3. Commit your Changes (`git commit -m 'feat: add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+---
+
+## 📜 Changelog & Release Notes
+
+Detailed release logs and version milestones are documented in [`CHANGELOG.md`](CHANGELOG.md).
 
 ---
 
