@@ -1720,6 +1720,31 @@ footer { border-top: 1px solid var(--line-strong); }
   background: #10b981;
   box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
 }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  user-select: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.status-pill:hover {
+  border-color: #38bdf8;
+  color: var(--ink);
+}
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
+}
 
 /* ═══════════════════════════════════════
    REVEAL ANIMATIONS
