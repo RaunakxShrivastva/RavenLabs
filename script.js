@@ -464,6 +464,13 @@
       }
     } else if (e.key === 'Escape') {
       closeShortcutsModal();
+      if (fpsMeter && !fpsMeter.hasAttribute('hidden')) {
+        toggleFpsHUD();
+      }
+      if (mobileNav && mobileNav.classList.contains('active')) {
+        mobileNav.classList.remove('active');
+        if (hamburger) hamburger.classList.remove('active');
+      }
       if (toast && toast.classList.contains('show')) {
         toast.classList.remove('show');
         clearTimeout(toastTimer);
@@ -818,15 +825,7 @@
     });
   })();
 
-  /* ─── 21. Keyboard Shortcut [/] quick focus navigation ─── */
-  window.addEventListener('keydown', (e) => {
-    if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
-    if (e.key === '?') {
-      showToast('Shortcuts: [H] Home · [C] Copy Clone · [T] Toggle Theme');
-    }
-  });
-
-  /* ─── 22. Section Anchor Deep-Link Copy ─── */
+  /* ─── 21. Section Anchor Deep-Link Copy ─── */
   (function initSectionAnchors() {
     document.querySelectorAll('.section-headline[id]').forEach(h => {
       const section = h.closest('section');
