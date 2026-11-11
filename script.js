@@ -130,30 +130,36 @@
   // Run after a slight delay to let intro animation start first
   setTimeout(initScrollReveal, 300);
 
-  /* ─── Parallax on hero grid lines ─── */
+  /* ─── Parallax on hero grid and watermark ─── */
   (function initParallax() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const hero = document.getElementById('hero');
     if (!hero) return;
+    const bigText = hero.querySelector('.hero-big-text');
+    const heroContent = hero.querySelector('.hero-content');
+    const heroGrid = hero.querySelector('.hero-grid');
 
     let ticking = false;
     window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > hero.offsetHeight + 150) return;
+
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          const bigText = hero.querySelector('.hero-big-text');
           if (bigText) {
-            bigText.style.transform = `translateX(-50%) translateY(${scrollY * 0.25}px)`;
+            bigText.style.transform = `translateX(-50%) translateY(${scrollY * 0.22}px)`;
           }
-          const heroContent = hero.querySelector('.hero-content');
           if (heroContent) {
             heroContent.style.transform = `translateY(${scrollY * 0.08}px)`;
+          }
+          if (heroGrid) {
+            heroGrid.style.transform = `translateY(${scrollY * 0.14}px)`;
           }
           ticking = false;
         });
         ticking = true;
       }
-    });
+    }, { passive: true });
   })();
 
   /* ─── Animated counter for milestone values ─── */
