@@ -423,6 +423,60 @@ h1.hero-headline .accent {
   line-height: 1.72;
 }
 
+/* ─── Hero Focus Ticker Badge ─── */
+.hero-ticker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(14, 165, 233, 0.06);
+  border: 1px solid rgba(14, 165, 233, 0.22);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+.hero-ticker-badge:hover {
+  border-color: rgba(14, 165, 233, 0.45);
+  background: rgba(14, 165, 233, 0.12);
+  transform: translateY(-1px);
+}
+.ticker-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: tickerDotPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes tickerDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+.ticker-label {
+  color: #38bdf8;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+.ticker-text {
+  color: var(--ink);
+  font-weight: 500;
+  min-width: 175px;
+  text-align: left;
+}
+.ticker-cursor {
+  color: #38bdf8;
+  font-weight: 700;
+  animation: tickerCursorBlink 0.9s infinite steps(2, start);
+}
+@keyframes tickerCursorBlink {
+  to { visibility: hidden; }
+}
+
 .hero-actions {
   display: flex;
   align-items: center;

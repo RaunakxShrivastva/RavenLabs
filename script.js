@@ -897,6 +897,57 @@
     requestAnimationFrame(sampleFPS);
   }
 
+  /* ─── 24. Hero Focus Typewriter Pipeline ─── */
+  (function initHeroTypewriter() {
+    const textEl = document.getElementById('ticker-text');
+    if (!textEl) return;
+
+    const phrases = [
+      'Native Rust Architecture',
+      'Zero Electron Overhead',
+      '< 14MB Memory Footprint',
+      'Sub-millisecond Latency',
+      'Windows 11 & Linux Freedom',
+      '100% Offline-First Twin'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let isDeleting = true;
+    let pauseCounter = 35; // wait at full phrase
+
+    function typeLoop() {
+      const currentPhrase = phrases[phraseIndex];
+
+      if (pauseCounter > 0) {
+        pauseCounter--;
+        setTimeout(typeLoop, 50);
+        return;
+      }
+
+      if (isDeleting) {
+        charIndex--;
+        textEl.textContent = currentPhrase.substring(0, charIndex);
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          pauseCounter = 6; // brief pause before next word
+        }
+        setTimeout(typeLoop, 32);
+      } else {
+        charIndex++;
+        textEl.textContent = currentPhrase.substring(0, charIndex);
+        if (charIndex === currentPhrase.length) {
+          isDeleting = true;
+          pauseCounter = 50; // pause at full text
+        }
+        setTimeout(typeLoop, 55);
+      }
+    }
+
+    setTimeout(typeLoop, 2200);
+  })();
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
