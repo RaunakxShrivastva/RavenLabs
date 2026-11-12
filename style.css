@@ -1517,6 +1517,17 @@ section { border-bottom: 1px solid var(--line-strong); }
   list-style: none;
   font-family: var(--font-sans);
   user-select: none;
+  transition: background 0.15s ease;
+}
+.faq-summary:hover {
+  background: var(--line);
+}
+.faq-summary:hover .faq-question {
+  color: var(--accent);
+}
+.faq-summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
 }
 .faq-summary::-webkit-details-marker {
   display: none;
