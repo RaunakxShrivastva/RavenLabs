@@ -445,6 +445,8 @@
     }
   }
 
+  const navShortcutsBtn = document.getElementById('nav-shortcuts-btn');
+  if (navShortcutsBtn) navShortcutsBtn.addEventListener('click', openShortcutsModal);
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeShortcutsModal);
   if (footerHelpTrigger) footerHelpTrigger.addEventListener('click', openShortcutsModal);
   if (shortcutsModal) {
