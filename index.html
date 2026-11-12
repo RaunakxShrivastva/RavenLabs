@@ -224,7 +224,7 @@
   <div class="hero-content">
     <div class="hero-blur-bg" aria-hidden="true"></div>
 
-    <img class="hero-brandmark" src="image.webp" alt="Raven Labs logo" width="160" height="160">
+    <img class="hero-brandmark" src="image.webp" alt="Raven Labs logo" width="160" height="160" fetchpriority="high" decoding="async">
 
     <div class="hero-meta-row">
       <p class="hero-eyebrow" aria-label="Independent Software Collective">
@@ -441,7 +441,8 @@
           alt="Raven Notch app icon"
           width="190"
           height="190"
-          loading="eager"
+          loading="lazy"
+          decoding="async"
         >
 
       </div>
@@ -522,7 +523,7 @@
     <div class="platform-item reveal-item d3">
       <span class="platform-status-pill live">Native Wayland / X11</span>
       <!-- Linux (Tux) logo — Simple Icons path -->
-      <img class="platform-icon" src="linux-tux-svgrepo-com.svg" alt="Linux (Tux)">
+      <img class="platform-icon" src="linux-tux-svgrepo-com.svg" alt="Linux (Tux)" width="44" height="44" loading="lazy" decoding="async">
       <p class="platform-name">Linux</p>
       <p class="platform-tagline">More freedom.<br>More possibilities.</p>
     </div>
