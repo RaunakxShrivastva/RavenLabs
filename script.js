@@ -94,6 +94,9 @@
       mobileMenuBtn.innerHTML = open
         ? `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`
         : `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>`;
+      if (typeof playHapticTone === 'function') {
+        playHapticTone(open ? 520 : 380, 0.04, 'sine', 0.02);
+      }
     });
 
     // Close on link click
@@ -467,9 +470,12 @@
       if (fpsMeter && !fpsMeter.hasAttribute('hidden')) {
         toggleFpsHUD();
       }
-      if (mobileNav && mobileNav.classList.contains('active')) {
-        mobileNav.classList.remove('active');
-        if (hamburger) hamburger.classList.remove('active');
+      if (mobileNav && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        if (mobileMenuBtn) {
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          mobileMenuBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>`;
+        }
       }
       if (toast && toast.classList.contains('show')) {
         toast.classList.remove('show');
