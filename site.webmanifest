@@ -1,11 +1,14 @@
 {
+  "id": "ravenlabs-collective",
   "name": "RavenLabs — Native Systems Collective",
   "short_name": "RavenLabs",
   "description": "Dismantling artificial platform borders through native, high-performance systems engineering.",
+  "lang": "en-US",
+  "dir": "ltr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "background_color": "#0b0b0c",
   "theme_color": "#0b0b0c",
   "icons": [
@@ -14,6 +17,22 @@
       "sizes": "512x512",
       "type": "image/webp",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Raven Notch",
+      "short_name": "Notch",
+      "description": "Open Raven Notch product showcase",
+      "url": "/#products",
+      "icons": [{ "src": "image.webp", "sizes": "512x512" }]
+    },
+    {
+      "name": "Architecture FAQ",
+      "short_name": "FAQ",
+      "description": "Read engineering FAQ",
+      "url": "/#faq",
+      "icons": [{ "src": "image.webp", "sizes": "512x512" }]
     }
   ],
   "categories": [
