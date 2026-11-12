@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] - 2026-11-12
+
+### Added
+- **Mobile Glassmorphic Navigation**: Full backdrop-filter blur and smooth slide-down overlay with integrated FAQ section navigation and tactile feedback.
+- **Vibration API Integration**: Native mobile haptic feedback patterns triggered on button clicks, command clipboard copies, and anchor deep-links.
+- **Audio State Chimes**: Bidirectional sound power-up (`[523.25, 659.25]`) and shutdown (`[440, 329.63]`) chime synthesis paired with feedback toasts.
+- **Navbar Shortcuts Trigger**: Accessible dedicated `?` hotkey pill in the desktop navigation bar for immediate keyboard cheat sheet discovery.
+
+### Optimized
+- **Asset Performance & Decoding**: Added explicit dimensional attributes, `loading="lazy"`, and `decoding="async"` across hero logo and Linux Tux icons to prevent main-thread layout shifts.
+- **Sitemap Freshness**: Updated sitemap timestamp for search engine re-indexing.
+
+---
+
 ## [1.1.0] - 2026-11-11
 
 ### Added
