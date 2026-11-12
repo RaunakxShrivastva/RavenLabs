@@ -283,8 +283,15 @@
     return audioCtx;
   }
 
+  function triggerMobileHaptic(pattern = 12) {
+    if (typeof navigator !== 'undefined' && 'vibrate' in navigator && soundEnabled) {
+      try { navigator.vibrate(pattern); } catch {}
+    }
+  }
+
   function playHapticTone(freq = 600, duration = 0.035, type = 'sine', gainVal = 0.04) {
     if (!soundEnabled) return;
+    triggerMobileHaptic(14);
     try {
       const ctx = getAudioContext();
       if (!ctx) return;
@@ -537,6 +544,7 @@
       if (navigator.clipboard) {
         navigator.clipboard.writeText(cloneCmd).then(() => {
           showToast('✓ Clone command copied to clipboard!');
+          triggerMobileHaptic([20, 35, 20]);
           if (typeof playMusicalChime === 'function') {
             playMusicalChime([523.25, 659.25, 783.99]);
           }
@@ -858,6 +866,7 @@
         if (navigator.clipboard) {
           navigator.clipboard.writeText(url).then(() => {
             showToast(`✓ Copied link to #${section.id}`);
+            triggerMobileHaptic([15, 30, 15]);
             if (typeof playHapticTone === 'function') {
               playHapticTone(720, 0.04, 'sine', 0.03);
             }
