@@ -302,8 +302,8 @@
     } catch {}
   }
 
-  function playMusicalChime(notes = [523.25, 659.25]) {
-    if (!soundEnabled) return;
+  function playMusicalChime(notes = [523.25, 659.25], force = false) {
+    if (!soundEnabled && !force) return;
     try {
       const ctx = getAudioContext();
       if (!ctx) return;
@@ -330,6 +330,7 @@
       const onIcon = soundBtn.querySelector('.sound-icon-on');
       const offIcon = soundBtn.querySelector('.sound-icon-off');
       const text = soundBtn.querySelector('.sound-text');
+      soundBtn.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
       if (soundEnabled) {
         soundBtn.classList.add('active');
         if (onIcon) onIcon.style.display = 'block';
@@ -345,10 +346,17 @@
     updateSoundBtnUI();
 
     soundBtn.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
+      if (soundEnabled) {
+        playMusicalChime([440, 329.63], true);
+        soundEnabled = false;
+        showToast('🔇 Tactile audio muted');
+      } else {
+        soundEnabled = true;
+        playMusicalChime([523.25, 659.25]);
+        showToast('🔊 Tactile audio enabled');
+      }
       try { localStorage.setItem('ravenlabs-sfx', soundEnabled ? 'on' : 'off'); } catch {}
       updateSoundBtnUI();
-      if (soundEnabled) playHapticTone(800, 0.05, 'triangle', 0.06);
     });
   }
 
