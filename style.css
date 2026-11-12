@@ -573,6 +573,21 @@ h1.hero-headline .accent {
 .hero-cli-box:hover {
   border-color: var(--accent);
 }
+.hero-cli-box.copied {
+  border-color: #10b981;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+  animation: cliPulse 0.4s ease;
+}
+@keyframes cliPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.025); }
+  100% { transform: scale(1); }
+}
+.hero-cli-box.copied .cli-copy-btn {
+  background: #10b981;
+  border-color: #10b981;
+  color: #fff;
+}
 .cli-prompt {
   color: var(--accent);
   font-weight: 700;

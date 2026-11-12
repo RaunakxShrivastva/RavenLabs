@@ -550,8 +550,13 @@
           if (typeof playMusicalChime === 'function') {
             playMusicalChime([523.25, 659.25, 783.99]);
           }
+          const box = cliCopyBtn.closest('.hero-cli-box');
+          if (box) {
+            box.classList.add('copied');
+            setTimeout(() => box.classList.remove('copied'), 2200);
+          }
           if (labelSpan) labelSpan.textContent = 'Copied!';
-          setTimeout(() => { if (labelSpan) labelSpan.textContent = 'Copy'; }, 2500);
+          setTimeout(() => { if (labelSpan) labelSpan.textContent = 'Copy'; }, 2200);
         }).catch(() => {});
       }
     });
