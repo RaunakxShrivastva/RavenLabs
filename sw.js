@@ -2,7 +2,7 @@
    RAVENLABS — Service Worker (Offline Cache & PWA Support)
    ============================================================ */
 
-const CACHE_NAME = 'ravenlabs-v1.0';
+const CACHE_NAME = 'ravenlabs-v1.1.1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
   '/script.js',
   '/image.webp',
   '/notch-icon.jpg',
+  '/linux-tux-svgrepo-com.svg',
   '/site.webmanifest'
 ];
 
