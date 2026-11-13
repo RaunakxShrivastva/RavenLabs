@@ -373,6 +373,10 @@
     btn.addEventListener('click', () => playHapticTone(650, 0.04, 'triangle', 0.04));
   });
 
+  document.querySelectorAll('.mission-point').forEach(point => {
+    point.addEventListener('mouseenter', () => playHapticTone(780, 0.02, 'sine', 0.012));
+  });
+
   /* ─── 3. Spotlight Cursor & 3D Tilt Physics ─── */
   (function initCardTiltAndSpotlight() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
