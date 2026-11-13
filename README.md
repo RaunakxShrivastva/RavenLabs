@@ -159,7 +159,8 @@ Open `http://localhost:8080` in your browser.
 
 - [x] Establish RavenLabs collective brand identity and mission
 - [x] Launch first flagship product: **Raven Notch**
-- [x] Deploy interactive, high-performance brand showcase website
+- [x] Deploy interactive, zero-overhead showcase with Web Audio synth & telemetry HUD
+- [x] Implement Progressive Web App (PWA) with service worker offline caching
 - [ ] Expand Linux native support & Wayland layer-shell protocol bindings
 - [ ] Introduce second confidential collective lab experiment
 - [ ] Open community contributor guidelines and plugin SDK
