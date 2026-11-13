@@ -894,6 +894,7 @@
   const fpsMeter = document.getElementById('fps-meter');
   const fpsValEl = document.getElementById('fps-val');
   const fpsMsEl = document.getElementById('fps-ms');
+  const fpsDomEl = document.getElementById('fps-dom');
   let fpsRunning = false;
   let lastFrameTime = performance.now();
   let frameCount = 0;
@@ -930,6 +931,7 @@
       const ms = delta.toFixed(1);
       if (fpsValEl) fpsValEl.textContent = String(fps);
       if (fpsMsEl) fpsMsEl.textContent = ms;
+      if (fpsDomEl) fpsDomEl.textContent = String(document.getElementsByTagName('*').length);
       frameCount = 0;
       lastSampleTime = now;
     }
