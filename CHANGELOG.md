@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.2] - 2026-11-13
+
+### Added
+- **Interactive Shortcut Actions**: Made keyboard shortcut modal rows directly clickable and touchable to trigger theme switches, audio toggles, CLI copy, and telemetry.
+- **Live DOM Node Telemetry**: Enhanced FPS HUD with continuous DOM element footprint counting alongside frame rate and render latency.
+- **Manifesto Track Hover**: Interactive hover states and directional acoustic tone feedback across core manifesto steps.
+- **Scroll Beacon Pulse**: Subtle glow beacon animation on floating back-to-top button when reaching the page terminus.
+
+### Enhanced
+- **Pipeline Visual Depth**: Upper border accent gradients and spring elevation hover physics on pipeline lab preview cards.
+- **Sitemap Indexing**: Updated last modified timestamp to 2026-11-13.
+
+---
+
 ## [1.1.1] - 2026-11-12
 
 ### Added
