@@ -2359,6 +2359,15 @@ footer { border-top: 1px solid var(--line-strong); }
   pointer-events: auto;
   transform: translateY(0);
 }
+.back-to-top.pulse-beacon {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
+  animation: bttPulse 2s infinite ease-in-out;
+}
+@keyframes bttPulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.08); }
+}
 .back-to-top:hover {
   border-color: var(--accent);
   color: var(--accent);

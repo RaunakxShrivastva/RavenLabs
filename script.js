@@ -691,6 +691,11 @@
       } else {
         backToTopBtn.classList.remove('visible');
       }
+      if (progress >= 0.95) {
+        backToTopBtn.classList.add('pulse-beacon');
+      } else {
+        backToTopBtn.classList.remove('pulse-beacon');
+      }
     }, { passive: true });
 
     backToTopBtn.addEventListener('click', () => {
