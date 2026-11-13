@@ -1189,17 +1189,32 @@ section { border-bottom: 1px solid var(--line-strong); }
 }
 
 .pipeline-card {
-  padding: 2rem;
+  padding: 2.25rem 2rem;
   background: var(--bg-card);
   border: 1px solid var(--line-strong);
   border-radius: 16px;
   position: relative;
   transition: transform 0.35s var(--ease), border-color 0.35s ease, box-shadow 0.35s ease;
+  overflow: hidden;
+}
+.pipeline-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 .pipeline-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255,255,255,0.18);
-  box-shadow: 0 16px 36px -10px rgba(0,0,0,0.25);
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.3);
+}
+.pipeline-card:hover::after {
+  opacity: 1;
 }
 
 .pipeline-card-top {
