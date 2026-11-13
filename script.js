@@ -457,6 +457,20 @@
     shortcutsModal.addEventListener('click', (e) => {
       if (e.target === shortcutsModal) closeShortcutsModal();
     });
+
+    shortcutsModal.querySelectorAll('.modal-shortcut-row').forEach(row => {
+      const kbd = row.querySelector('.shortcut-key');
+      if (!kbd) return;
+      const key = kbd.textContent.trim().toLowerCase();
+      row.addEventListener('click', () => {
+        if (key === 't' && themeBtn) themeBtn.click();
+        else if (key === 'm' && soundBtn) soundBtn.click();
+        else if (key === 'c' && cliCopyBtn) cliCopyBtn.click();
+        else if (key === 'h') { window.scrollTo({ top: 0, behavior: 'smooth' }); closeShortcutsModal(); }
+        else if (key === 'f') toggleFpsHUD();
+        else if (key === 'esc' || key === '?') closeShortcutsModal();
+      });
+    });
   }
 
   window.addEventListener('keydown', (e) => {
