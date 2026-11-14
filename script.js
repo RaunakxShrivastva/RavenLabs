@@ -549,6 +549,7 @@
       if (navigator.clipboard) {
         navigator.clipboard.writeText(text).then(() => {
           showToast(`✓ ${label}`);
+          triggerMobileHaptic(18);
           playHapticTone(750, 0.04, 'triangle', 0.04);
         }).catch(() => {});
       }
