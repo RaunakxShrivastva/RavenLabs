@@ -860,8 +860,13 @@
     if (!faqItems.length) return;
 
     faqItems.forEach(item => {
+      const summary = item.querySelector('summary');
+      if (summary) summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+
       item.addEventListener('toggle', () => {
+        if (summary) summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
         if (item.open) {
+          triggerMobileHaptic(12);
           if (typeof playHapticTone === 'function') {
             playHapticTone(640, 0.04, 'sine', 0.03);
           }
@@ -869,6 +874,8 @@
           faqItems.forEach(other => {
             if (other !== item && other.open) {
               other.open = false;
+              const otherSummary = other.querySelector('summary');
+              if (otherSummary) otherSummary.setAttribute('aria-expanded', 'false');
             }
           });
         } else {
