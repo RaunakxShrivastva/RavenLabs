@@ -1451,6 +1451,10 @@ section { border-bottom: 1px solid var(--line-strong); }
   height: 30px;
   color: var(--accent);
   margin-bottom: 0.25rem;
+  transition: transform 0.3s var(--ease), color 0.2s ease;
+}
+.feature-card:hover .feature-icon {
+  transform: translateY(-2px) scale(1.08);
 }
 
 .feature-label {
