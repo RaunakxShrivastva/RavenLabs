@@ -799,13 +799,15 @@
     window.addEventListener('online', () => {
       updateNetworkStatus();
       showToast('✓ Collective connection restored — online');
+      triggerMobileHaptic([20, 40, 20]);
       if (typeof playMusicalChime === 'function') {
-        playMusicalChime([523.25, 659.25, 783.99]);
+        playMusicalChime([523.25, 659.25, 783.99, 1046.50]);
       }
     });
     window.addEventListener('offline', () => {
       updateNetworkStatus();
       showToast('⚡ Offline mode active — running from local cache');
+      triggerMobileHaptic([40, 60, 40]);
       if (typeof playHapticTone === 'function') {
         playHapticTone(330, 0.08, 'sawtooth', 0.04);
       }
