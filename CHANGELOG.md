@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.3] - 2026-11-14
+
+### Added
+- **Founder Contact Micro-Physics**: Interactive slide transitions and scaling icon transforms on founder communication links.
+- **Enhanced Mobile Vibration**: Expanded Vibration API triggers to include 1-click contact clipboard copies and network status changes.
+- **Harmonic Network Chimes**: Four-note harmonic reconnect chords (`[523.25, 659.25, 783.99, 1046.50]`) played dynamically on connectivity recovery.
+
+### Accessibility & UI
+- **Accordion ARIA Expanded Sync**: Automated real-time synchronization of `aria-expanded` attributes across all FAQ disclosure items.
+- **Feature Icon Spring Transform**: Smooth elevation physics and hover color transitions across platform capability cards.
+- **Sitemap Indexing**: Updated lastmod timestamp to 2026-11-14 for search engines.
+
+---
+
 ## [1.1.2] - 2026-11-13
 
 ### Added
