@@ -1657,23 +1657,35 @@ section { border-bottom: 1px solid var(--line-strong); }
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.95rem 0;
+  padding: 1rem 0.75rem;
   border-bottom: 1px solid var(--line-strong);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--ink);
-  transition: color 0.15s;
+  border-radius: 8px;
+  position: relative;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 .contact-item:first-child { border-top: 1px solid var(--line-strong); }
-.contact-item:hover { color: var(--accent); }
+.contact-item:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.025);
+  transform: translateX(4px);
+}
+[data-theme="light"] .contact-item:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
 
 .contact-icon {
   width: 17px;
   height: 17px;
   color: var(--muted);
   flex-shrink: 0;
-  transition: color 0.15s;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
-.contact-item:hover .contact-icon { color: var(--accent); }
+.contact-item:hover .contact-icon {
+  color: var(--accent);
+  transform: scale(1.1);
+}
 
 /* ═══════════════════════════════════════
    FOOTER
