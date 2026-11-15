@@ -1309,6 +1309,22 @@ section { border-bottom: 1px solid var(--line-strong); }
 .platform-item:last-child { border-right: none; }
 .platform-item:hover { background: var(--line); }
 
+.platform-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s var(--ease);
+}
+.platform-item:hover::after {
+  transform: scaleX(1);
+}
+
 .platform-status-pill {
   position: absolute;
   top: 1.25rem;
