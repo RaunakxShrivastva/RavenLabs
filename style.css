@@ -1848,6 +1848,31 @@ footer { border-top: 1px solid var(--line-strong); }
   background: #38bdf8;
   box-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
 }
+.session-timer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  user-select: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.session-timer-pill:hover {
+  border-color: #a855f7;
+  color: var(--ink);
+}
+.session-timer-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a855f7;
+  box-shadow: 0 0 6px rgba(168, 85, 247, 0.5);
+}
 
 /* ═══════════════════════════════════════
    REVEAL ANIMATIONS

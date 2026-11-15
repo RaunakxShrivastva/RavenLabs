@@ -1037,6 +1037,23 @@
     setTimeout(typeLoop, 2200);
   })();
 
+  /* ─── 25. Session Duration Timer ─── */
+  (function initSessionTimer() {
+    const timerValEl = document.getElementById('session-timer-val');
+    if (!timerValEl) return;
+    const sessionStart = Date.now();
+
+    function updateSessionTime() {
+      const elapsedSec = Math.floor((Date.now() - sessionStart) / 1000);
+      const mins = String(Math.floor(elapsedSec / 60)).padStart(2, '0');
+      const secs = String(elapsedSec % 60).padStart(2, '0');
+      timerValEl.textContent = `${mins}:${secs}`;
+    }
+
+    setInterval(updateSessionTime, 1000);
+    updateSessionTime();
+  })();
+
   /* ─── Page show (bfcache fix) ─── */
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) location.reload();
