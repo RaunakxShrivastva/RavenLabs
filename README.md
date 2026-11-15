@@ -92,13 +92,13 @@ The RavenLabs brand website is crafted with zero-dependency native web standards
 - **PWA & Offline Service Worker**: Lightning-fast offline caching via `sw.js` and standalone installation manifest (`site.webmanifest`).
 - **Interactive Shortcuts Cheatsheet**: Press `?` to trigger a glassmorphic modal cheatsheet detailing hotkeys with tactile musical chimes.
 - **Real-Time Navigation Clock**: Precision live system time integrated directly into the desktop control header.
-- **Zero-Telemetry Local Counter**: Privacy-first local session counter operating purely client-side without remote tracking daemons.
+- **Zero-Telemetry Local Counter**: Privacy-first local session counter and elapsed duration meter operating purely client-side without remote tracking daemons.
 - **Ambient Trailing Ring Cursor**: Fluid physics-interpolated dual-layer cursor with magnetic scale triggers on interactive elements.
 - **Systems Architecture Specs**: Embedded telemetry metrics highlighting Rust (Zero GC), Slint / DirectComposition, <14MB idle RAM, and <0.4ms native UI latency with interactive hover tooltips.
-- **Floating Back-to-Top**: Smooth scroll-triggered glassmorphic control with tactile haptic tone.
+- **Floating Back-to-Top**: Smooth scroll-triggered glassmorphic control with tactile haptic tone and page terminus beacon pulse.
 - **Synthesized Tactile Audio**: Real-time micro-haptics generated dynamically via Web Audio API oscillators with animated soundwave visualizer bars.
 - **SEO & Search Rich Snippets**: Schema.org JSON-LD graph metadata for verified Organization and SoftwareApplication entities.
-- **Keyboard Shortcuts Navigation**: Press `T` for theme, `M` for audio, `C` to copy clone snippet, `H` for home, `F` for live FPS HUD, `?` for shortcuts modal, and `B` for smooth scroll to top.
+- **Keyboard Shortcuts Navigation**: Press `T` for theme, `M` for audio, `C` to copy clone snippet, `P` for products, `H` for home, `F` for live FPS HUD, `?` for shortcuts modal, and `B` for smooth scroll to top.
 - **Click-to-Copy Micro-Toast**: Quick founder contact copying with haptic feedback.
 - **Spotlight Cursor Optics & 3D Tilt**: Perspective calculations following user cursor trajectory.
 - **Ambient Mesh Drift**: Fluid multi-layer glow shaders creating visual depth.
