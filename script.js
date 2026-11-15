@@ -470,6 +470,11 @@
         if (key === 't' && themeBtn) themeBtn.click();
         else if (key === 'm' && soundBtn) soundBtn.click();
         else if (key === 'c' && cliCopyBtn) cliCopyBtn.click();
+        else if (key === 'p') {
+          const prod = document.getElementById('products');
+          if (prod) prod.scrollIntoView({ behavior: 'smooth' });
+          closeShortcutsModal();
+        }
         else if (key === 'h') { window.scrollTo({ top: 0, behavior: 'smooth' }); closeShortcutsModal(); }
         else if (key === 'f') toggleFpsHUD();
         else if (key === 'esc' || key === '?') closeShortcutsModal();
