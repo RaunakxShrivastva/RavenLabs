@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.4] - 2026-11-15
+
+### Added
+- **Product Navigation Hotkey (`P`)**: Direct keyboard jump to `#products` (Raven Notch) with tactile haptic tone and toast confirmation.
+- **Cheatsheet Integration**: Embedded `P` key directly inside the interactive keyboard shortcuts modal dialog.
+- **Session Duration Telemetry**: Client-side elapsed time meter in the footer status bar (`MM:SS`) operating with zero remote cookies or trackers.
+- **Platform Micro-Interactions**: Hover slide-in accent underline and acoustic synthesizer tones across platform cards.
+
+### Enhanced
+- **Milestone Grid Dynamics**: Spring elevation transforms and cyan highlight physics on milestone statistics.
+- **Sitemap Indexing**: Updated lastmod timestamp to 2026-11-15.
+
+---
+
 ## [1.1.3] - 2026-11-14
 
 ### Added
