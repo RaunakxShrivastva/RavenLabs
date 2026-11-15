@@ -1530,6 +1530,11 @@ section { border-bottom: 1px solid var(--line-strong); }
   height: 26px;
   color: var(--accent);
   margin-bottom: 0.75rem;
+  transition: transform 0.3s var(--ease), color 0.2s ease;
+}
+.milestone-item:hover .milestone-icon {
+  transform: translateY(-3px) scale(1.12);
+  color: #38bdf8;
 }
 
 .milestone-value {
