@@ -485,6 +485,16 @@
       if (soundBtn) soundBtn.click();
     } else if (e.key === 'c' || e.key === 'C') {
       if (cliCopyBtn) cliCopyBtn.click();
+    } else if (e.key === 'p' || e.key === 'P') {
+      const prodSection = document.getElementById('products');
+      if (prodSection) {
+        prodSection.scrollIntoView({ behavior: 'smooth' });
+        showToast('⚡ Jumped to Products: Raven Notch');
+        triggerMobileHaptic(18);
+        if (typeof playHapticTone === 'function') {
+          playHapticTone(660, 0.05, 'triangle', 0.04);
+        }
+      }
     } else if (e.key === 'h' || e.key === 'H') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       if (typeof playHapticTone === 'function') {
