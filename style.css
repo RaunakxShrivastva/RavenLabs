@@ -2549,3 +2549,24 @@ body.cursor-hover .cursor-ring {
   .cursor-dot, .cursor-ring { display: none !important; }
 }
 
+/* ─── High Contrast Accessibility (WCAG AAA) ─── */
+@media (prefers-contrast: more) {
+  :root {
+    --line: rgba(255, 255, 255, 0.35);
+    --line-strong: rgba(255, 255, 255, 0.55);
+    --muted: #d4d4d8;
+  }
+  [data-theme="light"] {
+    --line: rgba(0, 0, 0, 0.35);
+    --line-strong: rgba(0, 0, 0, 0.55);
+    --muted: #3f3f46;
+  }
+  .product-card, .feature-card, .pipeline-card, .milestone-item, .hero-dispatch-form {
+    border-width: 2px;
+  }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent) !important;
+    outline-offset: 3px !important;
+  }
+}
+
