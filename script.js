@@ -959,6 +959,7 @@
   let fpsRunning = false;
   let lastFrameTime = performance.now();
   let frameCount = 0;
+  let maxDelta = 0;
   let lastSampleTime = performance.now();
 
   function toggleFpsHUD() {
@@ -969,6 +970,7 @@
       lastFrameTime = performance.now();
       lastSampleTime = performance.now();
       frameCount = 0;
+      maxDelta = 0;
       requestAnimationFrame(sampleFPS);
       showToast('⚡ Live telemetry HUD enabled');
       if (typeof playMusicalChime === 'function') {
@@ -985,6 +987,7 @@
     if (!fpsRunning) return;
     frameCount++;
     const delta = now - lastFrameTime;
+    if (delta > maxDelta) maxDelta = delta;
     lastFrameTime = now;
 
     if (now - lastSampleTime >= 500) {
@@ -993,7 +996,20 @@
       if (fpsValEl) fpsValEl.textContent = String(fps);
       if (fpsMsEl) fpsMsEl.textContent = ms;
       if (fpsDomEl) fpsDomEl.textContent = String(document.getElementsByTagName('*').length);
+
+      const fpsDot = fpsMeter.querySelector('.fps-dot');
+      if (fpsDot) {
+        if (fps < 50 || maxDelta > 25) {
+          fpsDot.style.background = '#f59e0b';
+          fpsDot.style.boxShadow = '0 0 6px #f59e0b';
+        } else {
+          fpsDot.style.background = '#10b981';
+          fpsDot.style.boxShadow = '0 0 6px #10b981';
+        }
+      }
+
       frameCount = 0;
+      maxDelta = 0;
       lastSampleTime = now;
     }
     requestAnimationFrame(sampleFPS);
