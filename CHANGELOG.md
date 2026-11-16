@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.5] - 2026-11-16
+
+### Added
+- **Stereo Panning Audio Spatialization**: Integrated `StereoPannerNode` in the Web Audio oscillator engine to dynamically spatialise micro-haptics based on pointer coordinate position.
+- **Organic Typewriter Jitter**: Replaced linear typing loop with human keystroke latency variance on the hero engineering focus badge.
+- **Latency Jitter & Health Indicator**: Added 99th-percentile frame latency delta tracking in the FPS HUD with dynamic warning amber indicators.
+
+### Accessibility & UI
+- **WCAG AAA High Contrast Media Query**: Implemented `@media (prefers-contrast: more)` with hardened borders and high-visibility focus indicators.
+- **Tactile Button Sink Transform**: Added physical depression physics (`translateY(1.5px) scale(0.98)`) on `:active` button clicks.
+- **Sitemap Freshness**: Updated sitemap last modified timestamp to 2026-11-16.
+
+---
+
 ## [1.1.4] - 2026-11-15
 
 ### Added
