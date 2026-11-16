@@ -1020,17 +1020,19 @@
         if (charIndex === 0) {
           isDeleting = false;
           phraseIndex = (phraseIndex + 1) % phrases.length;
-          pauseCounter = 6; // brief pause before next word
+          pauseCounter = 8; // brief pause before next word
         }
-        setTimeout(typeLoop, 32);
+        const delSpeed = 24 + Math.floor(Math.random() * 16);
+        setTimeout(typeLoop, delSpeed);
       } else {
         charIndex++;
         textEl.textContent = currentPhrase.substring(0, charIndex);
         if (charIndex === currentPhrase.length) {
           isDeleting = true;
-          pauseCounter = 50; // pause at full text
+          pauseCounter = 48; // pause at full text
         }
-        setTimeout(typeLoop, 55);
+        const typeSpeed = 42 + Math.floor(Math.random() * 28);
+        setTimeout(typeLoop, typeSpeed);
       }
     }
 
