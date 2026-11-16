@@ -2266,8 +2266,10 @@ footer { border-top: 1px solid var(--line-strong); }
 .sw-bar:nth-child(1) { height: 5px; animation-delay: 0.1s; }
 .sw-bar:nth-child(2) { height: 11px; animation-delay: 0.3s; }
 .sw-bar:nth-child(3) { height: 7px; animation-delay: 0.2s; }
-.nav-sound-btn:not(.active) .sound-waves {
-  display: none;
+.nav-sound-btn:not(.active) .sound-waves .sw-bar {
+  animation-play-state: paused;
+  transform: scaleY(0.25);
+  opacity: 0.35;
 }
 @keyframes swAnim {
   0% { transform: scaleY(0.35); }
