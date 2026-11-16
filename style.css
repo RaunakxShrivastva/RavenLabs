@@ -719,9 +719,17 @@ h1.hero-headline .accent {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border: 1px solid var(--accent);
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, transform 0.1s ease;
 }
 .btn-accent:hover { opacity: 0.85; }
+
+.btn-primary:active,
+.btn-ghost:active,
+.btn-accent:active,
+.nav-cta:active,
+.dispatch-btn:active {
+  transform: translateY(1.5px) scale(0.98);
+}
 
 /* ═══════════════════════════════════════
    SHARED SECTION STYLES
