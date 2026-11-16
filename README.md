@@ -96,7 +96,8 @@ The RavenLabs brand website is crafted with zero-dependency native web standards
 - **Ambient Trailing Ring Cursor**: Fluid physics-interpolated dual-layer cursor with magnetic scale triggers on interactive elements.
 - **Systems Architecture Specs**: Embedded telemetry metrics highlighting Rust (Zero GC), Slint / DirectComposition, <14MB idle RAM, and <0.4ms native UI latency with interactive hover tooltips.
 - **Floating Back-to-Top**: Smooth scroll-triggered glassmorphic control with tactile haptic tone and page terminus beacon pulse.
-- **Synthesized Tactile Audio**: Real-time micro-haptics generated dynamically via Web Audio API oscillators with animated soundwave visualizer bars.
+- **Synthesized Tactile Audio**: Real-time micro-haptics generated dynamically via Web Audio API oscillators with pointer-tracked stereo spatialization (`StereoPannerNode`) and animated soundwave visualizer bars.
+- **Accessibility & High-Contrast**: Full WCAG AAA compliance featuring `@media (prefers-contrast: more)`, fortified focus rings, and reduced-motion overrides.
 - **SEO & Search Rich Snippets**: Schema.org JSON-LD graph metadata for verified Organization and SoftwareApplication entities.
 - **Keyboard Shortcuts Navigation**: Press `T` for theme, `M` for audio, `C` to copy clone snippet, `P` for products, `H` for home, `F` for live FPS HUD, `?` for shortcuts modal, and `B` for smooth scroll to top.
 - **Click-to-Copy Micro-Toast**: Quick founder contact copying with haptic feedback.
