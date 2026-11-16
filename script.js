@@ -273,6 +273,9 @@
     if (savedSound === 'off') soundEnabled = false;
   } catch {}
 
+  let currentPointerX = typeof window !== 'undefined' ? window.innerWidth / 2 : 0;
+  window.addEventListener('pointermove', (e) => { currentPointerX = e.clientX; }, { passive: true });
+
   function getAudioContext() {
     if (!audioCtx && typeof window.AudioContext !== 'undefined') {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -303,7 +306,17 @@
       gain.gain.setValueAtTime(gainVal, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
       osc.connect(gain);
-      gain.connect(ctx.destination);
+
+      const panVal = Math.max(-0.6, Math.min(0.6, ((currentPointerX / (window.innerWidth || 1)) - 0.5) * 1.2));
+      if (typeof ctx.createStereoPanner === 'function') {
+        const panner = ctx.createStereoPanner();
+        panner.pan.setValueAtTime(panVal, ctx.currentTime);
+        gain.connect(panner);
+        panner.connect(ctx.destination);
+      } else {
+        gain.connect(ctx.destination);
+      }
+
       osc.start();
       osc.stop(ctx.currentTime + duration);
     } catch {}
