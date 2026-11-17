@@ -2251,6 +2251,34 @@ footer { border-top: 1px solid var(--line-strong); }
   color: inherit;
   line-height: 1;
 }
+
+/* ─── Navigation Shortcut Micro-Tooltips ─── */
+.nav-tooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 3px 7px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+.nav-sound-btn:hover .nav-tooltip,
+#theme-toggle:hover .nav-tooltip,
+.nav-key-btn:hover .nav-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 .sound-waves {
   display: inline-flex;
   align-items: flex-end;
