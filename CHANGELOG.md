@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.6] - 2026-11-17
+
+### Added
+- **Vim-Style Scrolling Navigation**: Bound `J` (scroll down) and `K` (scroll up) keys with smooth interpolation and acoustic haptic tones.
+- **JS Heap Memory Telemetry**: Dynamically sampled `performance.memory` footprint (e.g. `14.2 MB`) in the live engineering telemetry HUD.
+- **Navigation Control Tooltips**: Accessible micro-tooltips attached to navbar controls displaying hotkey shortcuts (`[M]`, `[T]`, `[?]`).
+
+### Enhanced
+- **Glassmorphic Toast Popup**: Upgraded `#toast` alert notification with glassmorphism, accent boundary lighting, and cubic-bezier bounce physics.
+- **Sitemap Indexing**: Updated lastmod timestamp to 2026-11-17.
+
+---
+
 ## [1.1.5] - 2026-11-16
 
 ### Added
