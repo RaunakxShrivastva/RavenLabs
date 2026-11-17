@@ -78,7 +78,7 @@ The RavenLabs brand website is crafted with zero-dependency native web standards
 
 - **Engineering Architecture FAQ**: Accessible, exclusive accordion disclosure detailing Rust systems performance, DirectComposition GPU pipeline, and 100% offline verification.
 - **Section Deep-Link Copy**: Automatic anchor links on section headers providing one-click URL hash sharing with tactile feedback.
-- **Live Telemetry & Frame Latency HUD**: Press `F` to inspect real-time frame rate, instantaneous rendering delta time, and live DOM element node footprint.
+- **Live Telemetry & Frame Latency HUD**: Press `F` to inspect real-time frame rate, instantaneous rendering delta time, live DOM node count, and JS heap memory metrics.
 - **Mobile Haptics & Vibration API**: Integrated hardware vibration feedback on button clicks, clipboard copies, network state changes, and modal triggers.
 - **Interactive Shortcuts Cheatsheet**: Press `?` (or click `?` in nav) for a glassmorphic modal with click-to-execute rows and acoustic confirmation.
 - **Navigation ScrollSpy**: Intelligent `IntersectionObserver` observing active sections (`#mission`, `#products`, `#platforms`, `#milestones`, `#faq`, `#founder`) with glowing indicator underlines.
@@ -99,7 +99,7 @@ The RavenLabs brand website is crafted with zero-dependency native web standards
 - **Synthesized Tactile Audio**: Real-time micro-haptics generated dynamically via Web Audio API oscillators with pointer-tracked stereo spatialization (`StereoPannerNode`) and animated soundwave visualizer bars.
 - **Accessibility & High-Contrast**: Full WCAG AAA compliance featuring `@media (prefers-contrast: more)`, fortified focus rings, and reduced-motion overrides.
 - **SEO & Search Rich Snippets**: Schema.org JSON-LD graph metadata for verified Organization and SoftwareApplication entities.
-- **Keyboard Shortcuts Navigation**: Press `T` for theme, `M` for audio, `C` to copy clone snippet, `P` for products, `H` for home, `F` for live FPS HUD, `?` for shortcuts modal, and `B` for smooth scroll to top.
+- **Keyboard Shortcuts Navigation**: Press `T` for theme, `M` for audio, `C` to copy clone snippet, `P` for products, `J`/`K` for stepped scrolling, `H` for home, `F` for live FPS HUD, `?` for shortcuts modal, and `B` for smooth scroll to top.
 - **Click-to-Copy Micro-Toast**: Quick founder contact copying with haptic feedback.
 - **Spotlight Cursor Optics & 3D Tilt**: Perspective calculations following user cursor trajectory.
 - **Ambient Mesh Drift**: Fluid multi-layer glow shaders creating visual depth.
