@@ -967,6 +967,8 @@
   const fpsValEl = document.getElementById('fps-val');
   const fpsMsEl = document.getElementById('fps-ms');
   const fpsDomEl = document.getElementById('fps-dom');
+  const fpsMemWrap = document.getElementById('fps-mem-wrap');
+  const fpsMemEl = document.getElementById('fps-mem');
   let fpsRunning = false;
   let lastFrameTime = performance.now();
   let frameCount = 0;
@@ -1007,6 +1009,11 @@
       if (fpsValEl) fpsValEl.textContent = String(fps);
       if (fpsMsEl) fpsMsEl.textContent = ms;
       if (fpsDomEl) fpsDomEl.textContent = String(document.getElementsByTagName('*').length);
+      if (typeof performance !== 'undefined' && performance.memory && fpsMemWrap && fpsMemEl) {
+        fpsMemWrap.style.display = 'inline';
+        const usedMb = (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
+        fpsMemEl.textContent = `${usedMb}`;
+      }
 
       const fpsDot = fpsMeter.querySelector('.fps-dot');
       if (fpsDot) {
