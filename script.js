@@ -532,6 +532,16 @@
       if (typeof playHapticTone === 'function') {
         playHapticTone(580, 0.05, 'sine', 0.03);
       }
+    } else if (e.key === 'j' || e.key === 'J') {
+      window.scrollBy({ top: 260, behavior: 'smooth' });
+      if (typeof playHapticTone === 'function') {
+        playHapticTone(480, 0.02, 'sine', 0.015);
+      }
+    } else if (e.key === 'k' || e.key === 'K') {
+      window.scrollBy({ top: -260, behavior: 'smooth' });
+      if (typeof playHapticTone === 'function') {
+        playHapticTone(520, 0.02, 'sine', 0.015);
+      }
     } else if (e.key === 'Escape') {
       closeShortcutsModal();
       if (fpsMeter && !fpsMeter.hasAttribute('hidden')) {
