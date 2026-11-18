@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.7] - 2026-11-18
+
+### Added
+- **Click-to-Cycle Focus Ticker**: Interactive badge click handler cycling through real-time engineering disciplines accompanied by ascending triad musical chimes.
+- **Scroll Velocity Pitch Modulation**: Dynamic frequency scaling on micro-haptic tones proportional to rapid page scroll velocity.
+- **Dynamic Network Telemetry**: Integrated `navigator.connection` network downlink speed and effective tier (e.g. `4G 10M`) directly into the HUD telemetry display.
+- **Glass Specular Border on Scroll**: Applied elevated depth shadow and glass specular border highlight (`#site-nav.nav-scrolled`) upon user page traversal.
+
+### Enhanced
+- **Sitemap Indexing**: Updated lastmod timestamp to 2026-11-18 across all canonical routes.
+- **Engine Version Bump**: Promoted systems twin engine telemetry badge to `v1.1.7 Stable`.
+
+---
+
 ## [1.1.6] - 2026-11-17
 
 ### Added
