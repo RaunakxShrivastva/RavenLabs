@@ -1036,6 +1036,7 @@
   /* ─── 24. Hero Focus Typewriter Pipeline ─── */
   (function initHeroTypewriter() {
     const textEl = document.getElementById('ticker-text');
+    const badgeEl = document.getElementById('hero-ticker-badge');
     if (!textEl) return;
 
     const phrases = [
@@ -1051,6 +1052,21 @@
     let charIndex = phrases[0].length;
     let isDeleting = true;
     let pauseCounter = 35; // wait at full phrase
+
+    if (badgeEl) {
+      badgeEl.title = 'Click to cycle engineering focus';
+      badgeEl.addEventListener('click', () => {
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        textEl.textContent = phrases[phraseIndex];
+        charIndex = phrases[phraseIndex].length;
+        isDeleting = true;
+        pauseCounter = 60;
+        triggerMobileHaptic(16);
+        if (typeof playMusicalChime === 'function') {
+          playMusicalChime([659.25, 783.99]);
+        }
+      });
+    }
 
     function typeLoop() {
       const currentPhrase = phrases[phraseIndex];

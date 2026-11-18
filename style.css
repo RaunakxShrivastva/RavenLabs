@@ -436,6 +436,8 @@ h1.hero-headline .accent {
   font-size: 11px;
   letter-spacing: 0.04em;
   color: var(--ink);
+  cursor: pointer;
+  user-select: none;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
