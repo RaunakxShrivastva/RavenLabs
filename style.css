@@ -109,11 +109,23 @@ body::before {
   width: 100%;
   height: var(--nav-h);
   border-bottom: 1px solid var(--line-strong);
-  transition: background 0.35s ease, border-color 0.35s ease;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 [data-theme="dark"] #site-nav { background: rgba(11,11,12,0.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 [data-theme="light"] #site-nav { background: rgba(242,241,238,0.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+
+#site-nav.nav-scrolled {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+}
+[data-theme="dark"] #site-nav.nav-scrolled {
+  background: rgba(11, 11, 12, 0.96);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+[data-theme="light"] #site-nav.nav-scrolled {
+  background: rgba(242, 241, 238, 0.96);
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+}
 
 .nav-inner {
   display: flex;
