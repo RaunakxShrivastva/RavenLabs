@@ -276,6 +276,17 @@
   let currentPointerX = typeof window !== 'undefined' ? window.innerWidth / 2 : 0;
   window.addEventListener('pointermove', (e) => { currentPointerX = e.clientX; }, { passive: true });
 
+  let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+  let scrollVelocity = 0;
+  let lastScrollTime = performance.now();
+  window.addEventListener('scroll', () => {
+    const now = performance.now();
+    const dt = Math.max(now - lastScrollTime, 16);
+    scrollVelocity = Math.abs(window.scrollY - lastScrollY) / dt;
+    lastScrollY = window.scrollY;
+    lastScrollTime = now;
+  }, { passive: true });
+
   function getAudioContext() {
     if (!audioCtx && typeof window.AudioContext !== 'undefined') {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -301,8 +312,12 @@
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = type;
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(freq * 0.45, ctx.currentTime + duration);
+
+      const velocityOffset = Math.min(scrollVelocity * 35, 100);
+      const targetFreq = freq + velocityOffset;
+
+      osc.frequency.setValueAtTime(targetFreq, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(targetFreq * 0.45, ctx.currentTime + duration);
       gain.gain.setValueAtTime(gainVal, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
       osc.connect(gain);
