@@ -248,16 +248,24 @@
      HIGH-END INTERACTIVITY & MOTION ENGINE ($5,000 SUITE)
      ════════════════════════════════════════════════════════════ */
 
-  /* ─── 1. Scroll Progress Bar ─── */
+  /* ─── 1. Scroll Progress Bar & Nav Scroll State ─── */
   (function initScrollProgress() {
     const progressEl = document.getElementById('scroll-progress');
-    if (!progressEl) return;
+    const siteNav = document.getElementById('site-nav');
 
     function updateProgress() {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (scrollHeight <= 0) return;
-      const progress = Math.min(Math.max(window.scrollY / scrollHeight, 0), 1);
-      progressEl.style.transform = `scaleX(${progress})`;
+      if (scrollHeight > 0 && progressEl) {
+        const progress = Math.min(Math.max(window.scrollY / scrollHeight, 0), 1);
+        progressEl.style.transform = `scaleX(${progress})`;
+      }
+      if (siteNav) {
+        if (window.scrollY > 20) {
+          siteNav.classList.add('nav-scrolled');
+        } else {
+          siteNav.classList.remove('nav-scrolled');
+        }
+      }
     }
 
     window.addEventListener('scroll', updateProgress, { passive: true });
