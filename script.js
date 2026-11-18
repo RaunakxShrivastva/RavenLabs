@@ -992,6 +992,8 @@
   const fpsDomEl = document.getElementById('fps-dom');
   const fpsMemWrap = document.getElementById('fps-mem-wrap');
   const fpsMemEl = document.getElementById('fps-mem');
+  const fpsNetWrap = document.getElementById('fps-net-wrap');
+  const fpsNetEl = document.getElementById('fps-net');
   let fpsRunning = false;
   let lastFrameTime = performance.now();
   let frameCount = 0;
@@ -1036,6 +1038,13 @@
         fpsMemWrap.style.display = 'inline';
         const usedMb = (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
         fpsMemEl.textContent = `${usedMb}`;
+      }
+      if (typeof navigator !== 'undefined' && navigator.connection && fpsNetWrap && fpsNetEl) {
+        fpsNetWrap.style.display = 'inline';
+        const conn = navigator.connection;
+        const netType = conn.effectiveType ? conn.effectiveType.toUpperCase() : '';
+        const dl = conn.downlink ? `${conn.downlink}M` : '';
+        fpsNetEl.textContent = [netType, dl].filter(Boolean).join(' ') || 'Online';
       }
 
       const fpsDot = fpsMeter.querySelector('.fps-dot');
