@@ -78,7 +78,9 @@ The RavenLabs brand website is crafted with zero-dependency native web standards
 
 - **Engineering Architecture FAQ**: Accessible, exclusive accordion disclosure detailing Rust systems performance, DirectComposition GPU pipeline, and 100% offline verification.
 - **Section Deep-Link Copy**: Automatic anchor links on section headers providing one-click URL hash sharing with tactile feedback.
-- **Live Telemetry & Frame Latency HUD**: Press `F` to inspect real-time frame rate, instantaneous rendering delta time, live DOM node count, and JS heap memory metrics.
+- **Live Telemetry & Frame Latency HUD**: Press `F` to inspect real-time frame rate, instantaneous rendering delta time, live DOM node count, JS heap memory footprint, and active network downlink telemetry (`navigator.connection`).
+- **Interactive Focus Ticker & Acoustic Synthesis**: Interactive hero discipline ticker supporting manual click-to-cycle with triad chime synthesis, alongside scroll-velocity pitch modulation on micro-haptic tones.
+- **Dynamic Navigation Specular Highlighting**: High-elevation glassmorphic specular shadow and border illumination (`#site-nav.nav-scrolled`) applied dynamically on scroll traversal.
 - **Mobile Haptics & Vibration API**: Integrated hardware vibration feedback on button clicks, clipboard copies, network state changes, and modal triggers.
 - **Interactive Shortcuts Cheatsheet**: Press `?` (or click `?` in nav) for a glassmorphic modal with click-to-execute rows and acoustic confirmation.
 - **Navigation ScrollSpy**: Intelligent `IntersectionObserver` observing active sections (`#mission`, `#products`, `#platforms`, `#milestones`, `#faq`, `#founder`) with glowing indicator underlines.
