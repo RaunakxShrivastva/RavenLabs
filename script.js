@@ -964,6 +964,59 @@
         }
       });
     });
+
+    const faqSearchInput = document.getElementById('faq-search');
+    const faqSearchClear = document.getElementById('faq-search-clear');
+    const faqSearchCount = document.getElementById('faq-search-count');
+
+    if (faqSearchInput) {
+      function filterFaq(query) {
+        const q = (query || '').trim().toLowerCase();
+        let matches = 0;
+
+        faqItems.forEach(item => {
+          const qText = (item.querySelector('.faq-question') ? item.querySelector('.faq-question').textContent : '').toLowerCase();
+          const aText = (item.querySelector('.faq-answer') ? item.querySelector('.faq-answer').textContent : '').toLowerCase();
+          const isMatch = !q || qText.includes(q) || aText.includes(q);
+
+          if (isMatch) {
+            item.style.display = '';
+            matches++;
+            if (q) {
+              item.open = true;
+              const summary = item.querySelector('summary');
+              if (summary) summary.setAttribute('aria-expanded', 'true');
+            }
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (faqSearchClear) {
+          faqSearchClear.hidden = !q;
+        }
+
+        if (faqSearchCount) {
+          if (q) {
+            faqSearchCount.textContent = `${matches} of ${faqItems.length} matching`;
+          } else {
+            faqSearchCount.textContent = '';
+          }
+        }
+      }
+
+      faqSearchInput.addEventListener('input', (e) => {
+        filterFaq(e.target.value);
+      });
+
+      if (faqSearchClear) {
+        faqSearchClear.addEventListener('click', () => {
+          faqSearchInput.value = '';
+          filterFaq('');
+          faqSearchInput.focus();
+        });
+      }
+    }
   })();
 
   /* ─── 21. Section Anchor Deep-Link Copy ─── */
