@@ -366,6 +366,19 @@
     } catch {}
   }
 
+  // Auto-suspend AudioContext on tab backgrounding to conserve hardware energy
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (audioCtx && audioCtx.state === 'running') {
+        try { audioCtx.suspend(); } catch {}
+      }
+    } else {
+      if (audioCtx && audioCtx.state === 'suspended' && soundEnabled) {
+        try { audioCtx.resume(); } catch {}
+      }
+    }
+  });
+
   // Sound Toggle Control
   const soundBtn = document.getElementById('sound-toggle');
   if (soundBtn) {
