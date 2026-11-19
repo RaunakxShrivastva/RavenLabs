@@ -994,6 +994,25 @@
   const fpsMemEl = document.getElementById('fps-mem');
   const fpsNetWrap = document.getElementById('fps-net-wrap');
   const fpsNetEl = document.getElementById('fps-net');
+  const fpsBatWrap = document.getElementById('fps-bat-wrap');
+  const fpsBatEl = document.getElementById('fps-bat');
+  let batteryManager = null;
+
+  if (typeof navigator !== 'undefined' && typeof navigator.getBattery === 'function') {
+    navigator.getBattery().then((bm) => {
+      batteryManager = bm;
+      function updateBat() {
+        if (!fpsBatWrap || !fpsBatEl || !batteryManager) return;
+        fpsBatWrap.style.display = 'inline';
+        const pct = Math.round(batteryManager.level * 100);
+        const icon = batteryManager.charging ? '⚡' : '🔋';
+        fpsBatEl.textContent = `${pct}% ${icon}`;
+      }
+      updateBat();
+      batteryManager.addEventListener('levelchange', updateBat);
+      batteryManager.addEventListener('chargingchange', updateBat);
+    }).catch(() => {});
+  }
   let fpsRunning = false;
   let lastFrameTime = performance.now();
   let frameCount = 0;
