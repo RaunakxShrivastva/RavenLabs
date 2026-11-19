@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.8] - 2026-11-19
+
+### Added
+- **Battery Status Telemetry**: Integrated Battery Status API (`navigator.getBattery()`) displaying live battery percentage and charging state glyphs (`⚡`/`🔋`) in the telemetry HUD.
+- **Web Audio Tab Visibility Lifecycle**: Auto-suspends `AudioContext` on page backgrounding (`visibilitychange`) to conserve battery, cleanly resuming on tab focus.
+- **Real-Time Architecture FAQ Search**: Interactive instant search filter across technical FAQ disclosure items with count telemetry and clear trigger.
+- **FAQ Quick Focus Hotkey (`/`)**: Registered `/` keyboard shortcut to jump directly to the architecture query filter, documented in the interactive shortcuts modal.
+
+### Enhanced
+- **HUD Glassmorphic Chip Styling**: Upgraded `.fps-meter` styling with tabular numbers, interactive elevation hover physics, and light theme contrast parity.
+- **Sitemap Indexing**: Updated lastmod timestamp to 2026-11-19 across all canonical routes.
+- **Engine Version Bump**: Promoted systems twin engine telemetry badge to `v1.1.8 Stable`.
+
+---
+
 ## [1.1.7] - 2026-11-18
 
 ### Added
