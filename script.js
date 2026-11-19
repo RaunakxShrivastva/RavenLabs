@@ -527,6 +527,14 @@
         else if (key === 'h') { window.scrollTo({ top: 0, behavior: 'smooth' }); closeShortcutsModal(); }
         else if (key === 'f') toggleFpsHUD();
         else if (key.includes('j') || key.includes('k')) { window.scrollBy({ top: 260, behavior: 'smooth' }); closeShortcutsModal(); }
+        else if (key === '/') {
+          const faqInput = document.getElementById('faq-search');
+          if (faqInput) {
+            faqInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => faqInput.focus(), 250);
+          }
+          closeShortcutsModal();
+        }
         else if (key === 'esc' || key === '?') closeShortcutsModal();
       });
     });
@@ -563,6 +571,18 @@
         closeShortcutsModal();
       } else {
         openShortcutsModal();
+      }
+    } else if (e.key === '/' && !e.shiftKey) {
+      const faqInput = document.getElementById('faq-search');
+      if (faqInput) {
+        e.preventDefault();
+        faqInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        faqInput.focus();
+        showToast('🔍 FAQ search focused');
+        triggerMobileHaptic(14);
+        if (typeof playHapticTone === 'function') {
+          playHapticTone(600, 0.04, 'sine', 0.03);
+        }
       }
     } else if (e.key === 'b' || e.key === 'B') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
