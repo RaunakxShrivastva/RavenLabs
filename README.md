@@ -76,9 +76,9 @@ Beyond Raven Notch, the collective is actively engineering native replacements f
 
 The RavenLabs brand website is crafted with zero-dependency native web standards:
 
-- **Engineering Architecture FAQ**: Accessible, exclusive accordion disclosure detailing Rust systems performance, DirectComposition GPU pipeline, and 100% offline verification.
+- **Engineering Architecture FAQ**: Accessible, exclusive accordion disclosure detailing Rust systems performance, DirectComposition GPU pipeline, and 100% offline verification, equipped with a live keyword filter search (press `/` to jump).
 - **Section Deep-Link Copy**: Automatic anchor links on section headers providing one-click URL hash sharing with tactile feedback.
-- **Live Telemetry & Frame Latency HUD**: Press `F` to inspect real-time frame rate, instantaneous rendering delta time, live DOM node count, JS heap memory footprint, and active network downlink telemetry (`navigator.connection`).
+- **Live Telemetry & Frame Latency HUD**: Press `F` to inspect real-time frame rate, instantaneous rendering delta time, live DOM node count, JS heap memory footprint, active network downlink speed (`navigator.connection`), and Battery Status API telemetry (`navigator.getBattery()`).
 - **Interactive Focus Ticker & Acoustic Synthesis**: Interactive hero discipline ticker supporting manual click-to-cycle with triad chime synthesis, alongside scroll-velocity pitch modulation on micro-haptic tones.
 - **Dynamic Navigation Specular Highlighting**: High-elevation glassmorphic specular shadow and border illumination (`#site-nav.nav-scrolled`) applied dynamically on scroll traversal.
 - **Mobile Haptics & Vibration API**: Integrated hardware vibration feedback on button clicks, clipboard copies, network state changes, and modal triggers.
@@ -101,7 +101,7 @@ The RavenLabs brand website is crafted with zero-dependency native web standards
 - **Synthesized Tactile Audio**: Real-time micro-haptics generated dynamically via Web Audio API oscillators with pointer-tracked stereo spatialization (`StereoPannerNode`) and animated soundwave visualizer bars.
 - **Accessibility & High-Contrast**: Full WCAG AAA compliance featuring `@media (prefers-contrast: more)`, fortified focus rings, and reduced-motion overrides.
 - **SEO & Search Rich Snippets**: Schema.org JSON-LD graph metadata for verified Organization and SoftwareApplication entities.
-- **Keyboard Shortcuts Navigation**: Press `T` for theme, `M` for audio, `C` to copy clone snippet, `P` for products, `J`/`K` for stepped scrolling, `H` for home, `F` for live FPS HUD, `?` for shortcuts modal, and `B` for smooth scroll to top.
+- **Keyboard Shortcuts Navigation**: Press `T` for theme, `M` for audio, `C` to copy clone snippet, `P` for products, `/` for FAQ architecture search, `J`/`K` for stepped scrolling, `H` for home, `F` for live FPS HUD, `?` for shortcuts modal, and `B` for smooth scroll to top.
 - **Click-to-Copy Micro-Toast**: Quick founder contact copying with haptic feedback.
 - **Spotlight Cursor Optics & 3D Tilt**: Perspective calculations following user cursor trajectory.
 - **Ambient Mesh Drift**: Fluid multi-layer glow shaders creating visual depth.
