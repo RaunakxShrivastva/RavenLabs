@@ -1082,6 +1082,8 @@
   const fpsNetEl = document.getElementById('fps-net');
   const fpsBatWrap = document.getElementById('fps-bat-wrap');
   const fpsBatEl = document.getElementById('fps-bat');
+  const fpsHwWrap = document.getElementById('fps-hw-wrap');
+  const fpsHwEl = document.getElementById('fps-hw');
   let batteryManager = null;
 
   if (typeof navigator !== 'undefined' && typeof navigator.getBattery === 'function') {
@@ -1099,6 +1101,18 @@
       batteryManager.addEventListener('chargingchange', updateBat);
     }).catch(() => {});
   }
+
+  function updateHardwareSpecs() {
+    if (!fpsHwWrap || !fpsHwEl || typeof navigator === 'undefined') return;
+    const cores = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency}c` : '';
+    const mem = navigator.deviceMemory ? `${navigator.deviceMemory}GB` : '';
+    const hwStr = [cores, mem].filter(Boolean).join(' · ');
+    if (hwStr) {
+      fpsHwWrap.style.display = 'inline';
+      fpsHwEl.textContent = hwStr;
+    }
+  }
+  updateHardwareSpecs();
   let fpsRunning = false;
   let lastFrameTime = performance.now();
   let frameCount = 0;
