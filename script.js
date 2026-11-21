@@ -525,7 +525,7 @@
           if (prod) prod.scrollIntoView({ behavior: 'smooth' });
           closeShortcutsModal();
         }
-        else if (key === 'h') { window.scrollTo({ top: 0, behavior: 'smooth' }); closeShortcutsModal(); }
+        else if (key.includes('h') || key.includes('b')) { window.scrollTo({ top: 0, behavior: 'smooth' }); closeShortcutsModal(); }
         else if (key === 'f') toggleFpsHUD();
         else if (key.includes('j') || key.includes('k')) { window.scrollBy({ top: 260, behavior: 'smooth' }); closeShortcutsModal(); }
         else if (key === '/') {
