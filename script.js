@@ -786,6 +786,9 @@
       if (bttRingFill) {
         bttRingFill.style.strokeDashoffset = String(113.1 - (113.1 * progress));
       }
+      const pct = Math.round(progress * 100);
+      backToTopBtn.setAttribute('aria-label', `Scroll back to top (${pct}%)`);
+      backToTopBtn.title = `Scroll back to top (${pct}%)`;
       if (window.scrollY > 400) {
         backToTopBtn.classList.add('visible');
       } else {
