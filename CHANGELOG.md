@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.9] - 2026-11-21
+
+### Added
+- **Hardware Concurrency & RAM Sampling**: Embedded CPU logical core concurrency (`navigator.hardwareConcurrency`) and device RAM capacity (`navigator.deviceMemory`) telemetry in the live FPS HUD.
+- **Dynamic Scroll Percentage A11y**: Synchronized screen-reader `aria-label` and `title` tooltips with live scroll completion percentage on the circular back-to-top ring.
+- **Theme Mode Micro-Toast Alerts**: Added tactile toast notifications (`☀️ Light theme activated` / `🌙 Dark theme activated`) on visual appearance changes.
+- **Cheatsheet Top Terminus Key (`H / B`)**: Consolidated `H` and `B` key bindings in the keyboard modal cheatsheet with click-to-execute smooth scroll triggers.
+
+### Enhanced
+- **CLI Snippet Tactile Physics**: Enhanced quick-clone button with focus-visible outlines and spring active depression states.
+- **Sitemap Indexing**: Updated lastmod timestamp to 2026-11-21 across all canonical routes.
+- **Engine Version Bump**: Promoted systems twin engine telemetry badge to `v1.1.9 Stable`.
+
+---
+
 ## [1.1.8] - 2026-11-19
 
 ### Added
