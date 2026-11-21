@@ -64,6 +64,7 @@
       const current = root.getAttribute('data-theme') || 'dark';
       const nextTheme = current === 'dark' ? 'light' : 'dark';
       setTheme(nextTheme);
+      showToast(nextTheme === 'light' ? '☀️ Light theme activated' : '🌙 Dark theme activated');
       if (typeof playMusicalChime === 'function') {
         playMusicalChime(nextTheme === 'light' ? [523.25, 659.25, 783.99] : [783.99, 659.25, 523.25]);
       }
