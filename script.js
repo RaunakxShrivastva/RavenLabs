@@ -1078,6 +1078,8 @@
   /* ─── 23. Live FPS & Frame Latency Sampling HUD ─── */
   const fpsMeter = document.getElementById('fps-meter');
   const fpsValEl = document.getElementById('fps-val');
+  const fpsHzWrap = document.getElementById('fps-hz-wrap');
+  const fpsHzEl = document.getElementById('fps-hz');
   const fpsMsEl = document.getElementById('fps-ms');
   const fpsDomEl = document.getElementById('fps-dom');
   const fpsMemWrap = document.getElementById('fps-mem-wrap');
@@ -1121,6 +1123,7 @@
   let lastFrameTime = performance.now();
   let frameCount = 0;
   let maxDelta = 0;
+  let minDelta = Infinity;
   let lastSampleTime = performance.now();
 
   function toggleFpsHUD() {
@@ -1132,6 +1135,7 @@
       lastSampleTime = performance.now();
       frameCount = 0;
       maxDelta = 0;
+      minDelta = Infinity;
       requestAnimationFrame(sampleFPS);
       showToast('⚡ Live telemetry HUD enabled');
       if (typeof playMusicalChime === 'function') {
@@ -1149,12 +1153,22 @@
     frameCount++;
     const delta = now - lastFrameTime;
     if (delta > maxDelta) maxDelta = delta;
+    if (delta > 2 && delta < minDelta) minDelta = delta;
     lastFrameTime = now;
 
     if (now - lastSampleTime >= 500) {
       const fps = Math.round((frameCount * 1000) / (now - lastSampleTime));
       const ms = delta.toFixed(1);
       if (fpsValEl) fpsValEl.textContent = String(fps);
+      if (fpsHzWrap && fpsHzEl && minDelta < Infinity) {
+        const rawHz = Math.round(1000 / minDelta);
+        const standardHz = [60, 75, 90, 120, 144, 165, 240, 360];
+        const closest = standardHz.reduce((prev, curr) => Math.abs(curr - rawHz) < Math.abs(prev - rawHz) ? curr : prev);
+        const targetHz = Math.abs(closest - rawHz) <= 8 ? closest : rawHz;
+        fpsHzWrap.style.display = 'inline';
+        fpsHzEl.textContent = String(targetHz);
+      }
+      if (fpsMsEl) fpsMsEl.textContent = ms;
       if (fpsMsEl) fpsMsEl.textContent = ms;
       if (fpsDomEl) fpsDomEl.textContent = String(document.getElementsByTagName('*').length);
       if (typeof performance !== 'undefined' && performance.memory && fpsMemWrap && fpsMemEl) {
