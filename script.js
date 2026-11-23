@@ -435,13 +435,22 @@
 
   document.querySelectorAll('.platform-item').forEach(item => {
     item.addEventListener('mouseenter', () => playHapticTone(720, 0.02, 'sine', 0.015));
+    item.addEventListener('click', () => {
+      const name = item.querySelector('.platform-name') ? item.querySelector('.platform-name').textContent : 'Platform';
+      const status = item.querySelector('.platform-status-pill') ? item.querySelector('.platform-status-pill').textContent : 'Active';
+      showToast(`🖥️ ${name} Platform: ${status}`);
+      triggerMobileHaptic(18);
+      if (typeof playMusicalChime === 'function') {
+        playMusicalChime([523.25, 659.25, 783.99]);
+      }
+    });
   });
 
   /* ─── 3. Spotlight Cursor & 3D Tilt Physics ─── */
   (function initCardTiltAndSpotlight() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const cards = document.querySelectorAll('.product-card, .feature-card, .comp-card, .milestone-item');
+    const cards = document.querySelectorAll('.product-card, .feature-card, .comp-card, .milestone-item, .platform-item');
 
     cards.forEach(card => {
       card.addEventListener('mousemove', (e) => {

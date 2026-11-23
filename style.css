@@ -1333,8 +1333,9 @@ section { border-bottom: 1px solid var(--line-strong); }
   text-align: center;
   gap: 0.85rem;
   position: relative;
-  transition: background 0.2s ease;
-  cursor: default;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  user-select: none;
 }
 .platform-item:last-child { border-right: none; }
 .platform-item:hover { background: var(--line); }
