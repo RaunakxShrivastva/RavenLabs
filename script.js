@@ -540,6 +540,11 @@
           if (prod) prod.scrollIntoView({ behavior: 'smooth' });
           closeShortcutsModal();
         }
+        else if (key === 'o') {
+          const plat = document.getElementById('platforms');
+          if (plat) plat.scrollIntoView({ behavior: 'smooth' });
+          closeShortcutsModal();
+        }
         else if (key.includes('h') || key.includes('b')) { window.scrollTo({ top: 0, behavior: 'smooth' }); closeShortcutsModal(); }
         else if (key === 'f') toggleFpsHUD();
         else if (key.includes('j') || key.includes('k')) { window.scrollBy({ top: 260, behavior: 'smooth' }); closeShortcutsModal(); }
@@ -572,6 +577,16 @@
         triggerMobileHaptic(18);
         if (typeof playHapticTone === 'function') {
           playHapticTone(660, 0.05, 'triangle', 0.04);
+        }
+      }
+    } else if (e.key === 'o' || e.key === 'O') {
+      const platSection = document.getElementById('platforms');
+      if (platSection) {
+        platSection.scrollIntoView({ behavior: 'smooth' });
+        showToast('🖥️ Jumped to Platforms (Windows, Linux, macOS)');
+        triggerMobileHaptic(18);
+        if (typeof playMusicalChime === 'function') {
+          playMusicalChime([523.25, 659.25]);
         }
       }
     } else if (e.key === 'h' || e.key === 'H') {
