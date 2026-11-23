@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-11-23
+
+### Added
+- **Display Refresh Rate Target Estimation**: Dynamically calculates screen refresh target (e.g. `60Hz`, `120Hz`, `144Hz`, `240Hz`) via frame interval delta tracking in the telemetry HUD.
+- **Tab Inactivity Notice & Welcoming Tone**: Dynamically shifts document title on page blur and plays an acoustic welcoming tone upon refocusing active sessions.
+- **Platform Cards 3D Perspective & Acoustic Inspection**: Interactive 3D tilt tracking and acoustic milestone toasts attached to macOS, Windows, and Linux cards.
+- **Platform Navigation Hotkey (`O`)**: Direct keyboard jump to `#platforms` with toast confirmation and modal cheatsheet integration.
+
+### Enhanced
+- **Display Hz Neon Highlighting**: Applied blue neon styling to high-refresh display targets in the engineering HUD.
+- **Sitemap Indexing**: Updated lastmod timestamp to 2026-11-23 across all canonical routes.
+- **Engine Version Bump**: Promoted systems twin engine telemetry badge to `v1.2.0 Stable`.
+
+---
+
 ## [1.1.9] - 2026-11-21
 
 ### Added
