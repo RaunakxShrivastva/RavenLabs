@@ -2289,6 +2289,14 @@ footer { border-top: 1px solid var(--line-strong); }
   box-shadow: 0 0 6px #10b981;
   animation: statusPulse 1.5s infinite ease-in-out;
 }
+#fps-hz-wrap {
+  color: #60a5fa;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+[data-theme="light"] #fps-hz-wrap {
+  color: #2563eb;
+}
 
 /* ─── Tactile Audio SFX Toggle Button in Nav ─── */
 .nav-sound-btn {
