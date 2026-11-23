@@ -367,15 +367,21 @@
     } catch {}
   }
 
-  // Auto-suspend AudioContext on tab backgrounding to conserve hardware energy
+  // Auto-suspend AudioContext & update tab title on backgrounding
+  const defaultPageTitle = document.title;
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
+      document.title = '⚡ RavenLabs · Systems Collective';
       if (audioCtx && audioCtx.state === 'running') {
         try { audioCtx.suspend(); } catch {}
       }
     } else {
+      document.title = defaultPageTitle;
       if (audioCtx && audioCtx.state === 'suspended' && soundEnabled) {
-        try { audioCtx.resume(); } catch {}
+        try {
+          audioCtx.resume();
+          playHapticTone(520, 0.03, 'sine', 0.02);
+        } catch {}
       }
     }
   });
